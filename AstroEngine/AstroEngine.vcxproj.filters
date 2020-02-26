@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Intro.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Game.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="State_MainMenu.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Paused.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="Anim_Base.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Anim_Directional.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Anim_Standard.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="TestCharacter.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="BaseEntity.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsEntity.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsBox.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="TestShip.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EventManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseState.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Intro.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Game.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="State_MainMenu.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Paused.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Anim_Base.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Directions.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Anim_Directional.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Anim_Standard.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedContext.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="TestCharacter.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Converter.h" />
+    <ClInclude Include="BaseEntity.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsEntity.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsBox.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="TestShip.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="States">
+      <UniqueIdentifier>{2dbb3068-c36b-45e2-afad-1d1240e9e455}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{ab0bb9b9-2138-4587-8a3f-6e0da9afd8ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{32892f9a-e13f-4bb9-9b53-ae97c29e4ef9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General">
+      <UniqueIdentifier>{f6424ffd-07a7-43a7-b142-96ad48eb04c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{dc03764d-48d2-4e33-9c46-f7715d424138}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{7552ad1d-348c-490c-86f6-50b17b4be2a0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

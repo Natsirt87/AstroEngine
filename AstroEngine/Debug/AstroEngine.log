@@ -1,0 +1,14 @@
+﻿  PhysicsBox.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Converter.h(9,41): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\PhysicsBox.cpp(18): message : see reference to function template instantiation 'T conv::PTM<float>(const T &)' being compiled
+          with
+          [
+              T=float
+          ]
+  AstroEngine.vcxproj -> C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\Debug\AstroEngine.exe
