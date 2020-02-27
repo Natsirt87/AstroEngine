@@ -1,0 +1,196 @@
+﻿  Anim_Base.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Anim_Base.cpp(22,25): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Anim_Base.cpp(22,65): warning C4018: '<=': signed/unsigned mismatch
+  Anim_Directional.cpp
+  Anim_Standard.cpp
+  BaseEntity.cpp
+  EntityManager.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\StateManager.h(18,20): warning C4099: 'SharedContext': type name first seen using 'struct' now seen using 'class'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\EntityManager.h(11,20): warning C4099: 'SharedContext': type name first seen using 'struct' now seen using 'class'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\StateManager.h(18): message : see declaration of 'SharedContext'
+  EventManager.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\EventManager.cpp(209,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Game.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\StateManager.h(18,20): warning C4099: 'SharedContext': type name first seen using 'struct' now seen using 'class'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+  Main.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\StateManager.h(18,20): warning C4099: 'SharedContext': type name first seen using 'struct' now seen using 'class'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+  PhysicsEntity.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Converter.h(18,49): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\PhysicsEntity.cpp(23): message : see reference to function template instantiation 'T conv::RTD<float>(const T &)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Converter.h(9,41): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\PhysicsEntity.cpp(28): message : see reference to function template instantiation 'T conv::PTM<float>(const T &)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Converter.h(15,46): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\PhysicsEntity.cpp(38): message : see reference to function template instantiation 'T conv::DTR<float>(const T &)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Converter.h(12,41): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\PhysicsEntity.cpp(95): message : see reference to function template instantiation 'T conv::MTP<float>(const T &)' being compiled
+          with
+          [
+              T=float
+          ]
+  PhysicsBox.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Converter.h(9,41): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\PhysicsBox.cpp(18): message : see reference to function template instantiation 'T conv::PTM<float>(const T &)' being compiled
+          with
+          [
+              T=float
+          ]
+  SpriteSheet.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SpriteSheet.cpp(19,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SpriteSheet.cpp(19,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  StateManager.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\StateManager.h(18,20): warning C4099: 'SharedContext': type name first seen using 'struct' now seen using 'class'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+  State_Game.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\StateManager.h(18,20): warning C4099: 'SharedContext': type name first seen using 'struct' now seen using 'class'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_Game.cpp(20,41): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_Game.cpp(20,27): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_Game.cpp(101,56): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_Game.cpp(101,101): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_Game.cpp(102,25): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_Game.cpp(102,70): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+  State_Intro.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\StateManager.h(18,20): warning C4099: 'SharedContext': type name first seen using 'struct' now seen using 'class'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_Intro.cpp(55,65): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_Intro.cpp(59,68): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+  State_MainMenu.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\StateManager.h(18,20): warning C4099: 'SharedContext': type name first seen using 'struct' now seen using 'class'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_MainMenu.cpp(86,66): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_MainMenu.cpp(87,61): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\State_MainMenu.cpp(88,63): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+  State_Paused.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\StateManager.h(18,20): warning C4099: 'SharedContext': type name first seen using 'struct' now seen using 'class'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+  TestCharacter.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\StateManager.h(18,20): warning C4099: 'SharedContext': type name first seen using 'struct' now seen using 'class'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\TestCharacter.cpp(11,72): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\TestCharacter.cpp(11,39): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\xtgmath.h(24,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  TestShip.cpp
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(10,1): warning C4099: 'SharedContext': type name first seen using 'class' now seen using 'struct'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\SharedContext.h(9): message : see declaration of 'SharedContext'
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\TestShip.cpp(48,72): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\TestShip.cpp(48,39): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Converter.h(9,41): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\TestShip.cpp(55): message : see reference to function template instantiation 'T conv::PTM<T>(const T &)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Converter.h(15,46): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\TestShip.cpp(83): message : see reference to function template instantiation 'T conv::DTR<float>(const T &)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\Converter.h(18,49): warning C4244: 'return': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\AstroEngine\TestShip.cpp(104): message : see reference to function template instantiation 'T conv::RTD<float>(const T &)' being compiled
+          with
+          [
+              T=float
+          ]
+  Window.cpp
+  Generating Code...
+  AstroEngine.vcxproj -> C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Projects\Astro Engine\x64\Debug\AstroEngine.exe
