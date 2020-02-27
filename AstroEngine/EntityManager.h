@@ -1,7 +1,7 @@
 #pragma once
 #include <unordered_map>
 #include <functional>
-#include "TestCharacter.h"
+#include "BaseEntity.h"
 
 using EntityContainer = std::unordered_map<
 	unsigned int, BaseEntity*>;

@@ -1,4 +1,5 @@
 #include "TestShip.h"
+#include "StateManager.h"
 
 TestShip::TestShip(EntityManager* entityMgr) 
 	: PhysicsEntity(entityMgr),
