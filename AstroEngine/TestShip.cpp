@@ -94,8 +94,7 @@ void TestShip::thrust(EventDetails* details)
 void TestShip::rotateToMouse()
 {
 	sf::Window* window = m_entityMgr->GetContext()->m_wind->GetRenderWindow();
-	sf::Vector2u windowSize = m_entityMgr->GetContext()->
-		m_wind->GetRenderWindow()->getSize();
+	sf::Vector2u windowSize = window->getSize();
 	sf::Vector2i mousePos = sf::Mouse::getPosition(*window);
 
 	float dx = mousePos.x - windowSize.x/2.f;
