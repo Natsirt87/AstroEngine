@@ -32,27 +32,12 @@
     <ClCompile Include="Anim_Standard.cpp">
       <Filter>Animation</Filter>
     </ClCompile>
-    <ClCompile Include="TestCharacter.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="BaseEntity.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsEntity.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsBox.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="TestShip.cpp">
-      <Filter>Entities</Filter>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,28 +89,13 @@
     <ClInclude Include="Utilities.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="TestCharacter.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteSheet.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h" />
     <ClInclude Include="Converter.h" />
-    <ClInclude Include="BaseEntity.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsEntity.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsBox.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="TestShip.h">
-      <Filter>Entities</Filter>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +116,9 @@
     </Filter>
     <Filter Include="Components">
       <UniqueIdentifier>{7552ad1d-348c-490c-86f6-50b17b4be2a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Systems">
+      <UniqueIdentifier>{b71e1e15-c533-4110-a3bd-7756d50433e5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
