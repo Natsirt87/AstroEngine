@@ -20,6 +20,8 @@ void PhysicsBox::Create(float sizeX, float sizeY)
 	m_fixtureDef.density = 200;
 	m_body->CreateFixture(&m_fixtureDef);
 
+	b2CircleShape circle;
+
 	SetSize(sizeX, sizeY);
 }
 

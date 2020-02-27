@@ -34,6 +34,6 @@ protected:
 	b2World* m_world;
 	b2Body* m_body;
 	b2BodyDef m_bodyDef;
-
+	
 };
 
