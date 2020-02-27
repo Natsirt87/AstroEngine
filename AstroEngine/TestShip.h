@@ -1,5 +1,6 @@
 #pragma once
 #include "PhysicsEntity.h"
+#include "SpriteSheet.h"
 
 enum class AnimState{ Thrusting, Idle };
 
