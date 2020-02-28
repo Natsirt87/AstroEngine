@@ -25,11 +25,12 @@ b2Fixture* Rigidbody::AddBox(float sizeX, float sizeY, const b2Vec2& offset, flo
 	float b2SizeY = conv::PTM(sizeY);
 	float b2Angle = conv::DTR(angle);
 
-	shape->SetAsBox(b2SizeX / 2.f, b2SizeY / 2.f, offset, angle);
+	shape->SetAsBox(b2SizeX / 2.0, b2SizeY / 2.0, offset, angle);
 	fixtureDef->shape = shape;
 	fixtureDef->density = 1;
 	fixtureDef->friction = 0.5;
 	m_colliders.emplace_back(fixtureDef, shape);
+	
 
 	return m_body->CreateFixture(fixtureDef);
 }
@@ -78,6 +79,16 @@ const sf::Vector2f& Rigidbody::GetVelocity()
 	return sf::Vector2f(conv::MTP(m_body->GetLinearVelocity().x), conv::MTP(m_body->GetLinearVelocity().y));
 }
 
+float Rigidbody::GetAngularVelocity()
+{
+	return conv::MTP(m_body->GetAngularVelocity());
+}
+
+float Rigidbody::GetInertia()
+{
+	return m_body->GetInertia();
+}
+
 float Rigidbody::GetAngle()
 {
 	return conv::RTD(m_body->GetAngle());
@@ -96,6 +107,11 @@ void Rigidbody::SetPosition(const sf::Vector2f& pos)
 void Rigidbody::SetVelocity(float x, float y)
 {
 	m_body->SetLinearVelocity(b2Vec2(conv::PTM(x), conv::PTM(y)));
+}
+
+void Rigidbody::SetAngularVelocity(float v)
+{
+	m_body->SetAngularVelocity(v);
 }
 
 void Rigidbody::SetAngle(float angle)

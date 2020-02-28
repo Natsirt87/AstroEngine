@@ -23,7 +23,7 @@ public:
 protected:
 	virtual void OnEntityCollision(BaseEntity* other) = 0;
 	
-	Rigidbody physicsBody; 
+	Rigidbody rigidbody; 
 	
 };
 

@@ -28,9 +28,14 @@ public:
 	void SetPosition(float x, float y);
 	void SetPosition(const sf::Vector2f& pos);
 	void SetVelocity(float x, float y);
+	void SetAngularVelocity(float v);
 	void SetAngle(float angle);
 
-	//Just public versions of the private b2Body standard manipulation methods
+	//Exposed Box2d body getters
+	float GetAngularVelocity();
+	float GetInertia();
+
+	//Exposed Box2d body manipulation methods
 	void ApplyAngularImpulse(float impulse);
 	void ApplyForce(const sf::Vector2f& force, const sf::Vector2f& point);
 	void ApplyForceToCenter(const sf::Vector2f& force);

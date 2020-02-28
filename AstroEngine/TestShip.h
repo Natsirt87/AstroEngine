@@ -23,6 +23,9 @@ protected:
 	void thrust(EventDetails* details);
 	void rotateToMouse();
 	
+	float thrustForce;
+	float rotationTorque;
+
 	b2Fixture* boxFixture;
 	SpriteSheet m_spriteSheet;
 	AnimState animState;
