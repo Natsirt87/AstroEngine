@@ -3,7 +3,6 @@
 PhysicsEntity::PhysicsEntity(EntityManager* entityMgr) 
 	: BaseEntity(entityMgr)
 {
-	m_name = "PhysicsEntity";
 	m_type = EntityType::PhysicsObject;
 	m_world = m_entityMgr->GetContext()->m_world;
 
