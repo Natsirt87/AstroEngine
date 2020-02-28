@@ -10,6 +10,9 @@ public:
 	TestShip(EntityManager* entityMgr);
 	virtual ~TestShip();
 
+	virtual void PhysicsCollisionStart(PhysicsEntity* other) override;
+	virtual void PhysicsCollisionEnd(PhysicsEntity* other) override;
+
 	virtual void Update(float dt) override;
 	virtual void Draw(sf::RenderWindow* wind) override;
 

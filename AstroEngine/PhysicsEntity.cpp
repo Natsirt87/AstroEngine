@@ -2,7 +2,10 @@
 
 PhysicsEntity::PhysicsEntity(EntityManager* entityMgr) 
 	: BaseEntity(entityMgr), rigidbody(entityMgr->GetContext()->m_world)
-{ m_type = EntityType::PhysicsObject; }
+{ 
+	m_type = EntityType::PhysicsObject; 
+	rigidbody.SetUserData(this);
+}
 
 PhysicsEntity::~PhysicsEntity()
 {}

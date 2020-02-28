@@ -16,6 +16,9 @@ public:
 	void SetAngle(float angle);
 
 	virtual void SetVelocity(float x, float y) override;
+
+	virtual void PhysicsCollisionStart(PhysicsEntity* other) = 0;
+	virtual void PhysicsCollisionEnd(PhysicsEntity* other) = 0;
 	
 	virtual void Update(float dt);
 	virtual void Draw(sf::RenderWindow* wind) = 0;

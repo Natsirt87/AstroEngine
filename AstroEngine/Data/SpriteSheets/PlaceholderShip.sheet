@@ -4,6 +4,6 @@ Scale 1.0 1.0
 |Type|Name|StartFrame|EndFrame|Row|FrameTime|FrameActionStart|End| 
 AnimationType Standard
 Animation Idle 0 1 0 0.1 -1 -1
-Animation StartThrust 0 2 1 0.035 -1 -1
-Animation Thrust 0 3 2 0.15 -1 -1
-Animation StopThrust 0 4 3 0.025 -1 -1
+Animation StartThrust 0 1 1 0.035 -1 -1
+Animation Thrust 0 4 2 0.15 -1 -1
+Animation StopThrust 0 2 3 0.035 -1 -1

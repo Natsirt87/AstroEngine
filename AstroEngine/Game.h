@@ -8,6 +8,7 @@
 #include "EventManager.h"
 #include "TextureManager.h"
 #include "EntityManager.h"
+#include "ContactListener.h"
 
 class Game
 {
@@ -32,6 +33,7 @@ private:
 	EntityManager m_entityManager;
 	TextureManager m_textureManager;
 	b2World m_world;
+	ContactListener m_contactListener;
 
 	SharedContext m_context;
 

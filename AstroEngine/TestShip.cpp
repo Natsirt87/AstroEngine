@@ -5,7 +5,7 @@ TestShip::TestShip(EntityManager* entityMgr)
 	: PhysicsEntity(entityMgr),
 	m_spriteSheet(m_entityMgr->GetContext()->m_textureManager),
 	thrustForce(100),
-	rotationTorque(100)
+	rotationTorque(250)
 {
 	spriteSheetSetup();
 	physicsSetup();
@@ -20,6 +20,14 @@ TestShip::~TestShip()
 	EventManager* eventMgr = m_entityMgr->GetContext()->m_eventManager;
 	eventMgr->RemoveCallback(StateType::Game, "Game_StartThrust");
 	eventMgr->RemoveCallback(StateType::Game, "Game_StopThrust");
+}
+
+void TestShip::PhysicsCollisionStart(PhysicsEntity* other)
+{
+}
+
+void TestShip::PhysicsCollisionEnd(PhysicsEntity* other)
+{
 }
 
 void TestShip::Update(float dt)
@@ -113,16 +121,12 @@ void TestShip::rotateToMouse()
 		}
 	}
 
-	
-
 	float bodyAngle = rigidbody.GetAngle();
 	float nextAngle = bodyAngle + rigidbody.GetAngularVelocity() / 3.0;
 	float totalRotation = desiredAngle - nextAngle;
 
 	while (totalRotation < -180) totalRotation += 360;
 	while (totalRotation > 180) totalRotation -= 360;
-
-	std::cout << totalRotation << std::endl;
 	
 	float torque = totalRotation < 0 ? -rotationTorque : rotationTorque;
 	rigidbody.ApplyTorque(torque);

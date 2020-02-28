@@ -89,6 +89,11 @@ float Rigidbody::GetInertia()
 	return m_body->GetInertia();
 }
 
+void Rigidbody::SetUserData(void* data)
+{
+	m_body->SetUserData(data);
+}
+
 float Rigidbody::GetAngle()
 {
 	return conv::RTD(m_body->GetAngle());

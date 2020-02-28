@@ -20,6 +20,15 @@ void PhysicsBox::Create(float sizeX, float sizeY)
 	SetSize(sizeX, sizeY);
 }
 
+void PhysicsBox::PhysicsCollisionStart(PhysicsEntity* other)
+{
+	
+}
+
+void PhysicsBox::PhysicsCollisionEnd(PhysicsEntity* other)
+{
+}
+
 void PhysicsBox::Update(float dt)
 {
 	PhysicsEntity::Update(dt);

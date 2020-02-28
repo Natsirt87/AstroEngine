@@ -74,11 +74,11 @@ void State_MainMenu::Activate()
 	}
 }
 
-void State_MainMenu::Deactivate() {}
+void State_MainMenu::Deactivate() { m_timePassed = 0; }
 
 void State_MainMenu::Update(const sf::Time& time) 
 {
-	if (m_timePassed < 1.f)
+	if (m_timePassed <= 1.0)
 	{
 		m_timePassed += time.asSeconds();
 		for (int i = 0; i < 3; i++)

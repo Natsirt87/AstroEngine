@@ -5,6 +5,7 @@ m_stateManager(&m_context), m_entityManager(&m_context, 500), m_world(b2Vec2(0,0
 {
 	m_clock.restart();
 	m_world.SetAllowSleeping(true);
+	m_world.SetContactListener(&m_contactListener);
 
 	m_context.m_wind = &m_window;
 	m_context.m_eventManager = m_window.GetEventManager();

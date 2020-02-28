@@ -35,6 +35,9 @@ public:
 	float GetAngularVelocity();
 	float GetInertia();
 
+	//Exposed Box2d body setters
+	void SetUserData(void* data);
+
 	//Exposed Box2d body manipulation methods
 	void ApplyAngularImpulse(float impulse);
 	void ApplyForce(const sf::Vector2f& force, const sf::Vector2f& point);
