@@ -22,11 +22,9 @@ protected:
 	void animate();
 	void thrust(EventDetails* details);
 	void rotateToMouse();
-
-	b2PolygonShape m_collider;
-	b2FixtureDef m_fixtureDef;
+	
+	b2Fixture* boxFixture;
 	SpriteSheet m_spriteSheet;
-
 	AnimState animState;
 };
 

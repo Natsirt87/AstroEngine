@@ -4,6 +4,7 @@ Rigidbody::Rigidbody(b2World* world) : m_world(world)
 {
 	m_bodyDef.type = b2BodyType::b2_dynamicBody;
 	m_bodyDef.position.Set(0, 0);
+	m_bodyDef.fixedRotation = false;
 	m_bodyDef.angle = 0;
 	m_body = m_world->CreateBody(&m_bodyDef);
 }
@@ -11,16 +12,11 @@ Rigidbody::Rigidbody(b2World* world) : m_world(world)
 Rigidbody::~Rigidbody()
 {
 	m_world->DestroyBody(m_body);
-	for (int i = 0; i < m_colliders.size; i++)
-	{
-		delete m_colliders[i].first;
-		m_colliders[i].first = nullptr;
-		delete m_colliders[i].second;
-		m_colliders[i].second = nullptr;
-	}
+	m_colliders.clear();
+	m_colliders.shrink_to_fit();
 }
 
-const b2Fixture* Rigidbody::AddBox(float sizeX, float sizeY, const b2Vec2& offset, float angle)
+b2Fixture* Rigidbody::AddBox(float sizeX, float sizeY, const b2Vec2& offset, float angle)
 {
 	b2FixtureDef* fixtureDef = new b2FixtureDef();
 	b2PolygonShape* shape = new b2PolygonShape();
@@ -29,33 +25,39 @@ const b2Fixture* Rigidbody::AddBox(float sizeX, float sizeY, const b2Vec2& offse
 	float b2SizeY = conv::PTM(sizeY);
 	float b2Angle = conv::DTR(angle);
 
-	shape->SetAsBox(b2SizeX, b2SizeY, offset, angle);
+	shape->SetAsBox(b2SizeX / 2.f, b2SizeY / 2.f, offset, angle);
 	fixtureDef->shape = shape;
+	fixtureDef->density = 1;
+	fixtureDef->friction = 0.5;
 	m_colliders.emplace_back(fixtureDef, shape);
 
 	return m_body->CreateFixture(fixtureDef);
 }
 
-const b2Fixture* Rigidbody::AddPolygon(const b2Vec2* points, int32 count)
+b2Fixture* Rigidbody::AddPolygon(const b2Vec2* points, int32 count)
 {
 	b2FixtureDef* fixtureDef = new b2FixtureDef();
 	b2PolygonShape* shape = new b2PolygonShape();
 
 	shape->Set(points, count);
 	fixtureDef->shape = shape;
+	fixtureDef->density = 1;
+	fixtureDef->friction = 0.5;
 	m_colliders.emplace_back(fixtureDef, shape);
 
 	return m_body->CreateFixture(fixtureDef);
 }
 
-const b2Fixture* Rigidbody::AddCircle(float radius, const b2Vec2& offset)
+b2Fixture* Rigidbody::AddCircle(float radius, const b2Vec2& offset)
 {
 	b2FixtureDef* fixtureDef = new b2FixtureDef();
 	b2CircleShape* shape = new b2CircleShape();
 
-	shape->m_radius = radius;
+	shape->m_radius = conv::PTM(radius);
 	shape->m_p = offset;
 	fixtureDef->shape = shape;
+	fixtureDef->density = 1;
+	fixtureDef->friction = 0.5;
 	m_colliders.emplace_back(fixtureDef, shape);
 
 	return m_body->CreateFixture(fixtureDef);
@@ -133,4 +135,9 @@ void Rigidbody::ApplyLinearImpulseToCenter(const sf::Vector2f& impulse)
 void Rigidbody::ApplyTorque(float torque)
 {
 	m_body->ApplyTorque(torque, true);
+}
+
+void Rigidbody::ResetMassData()
+{
+	m_body->ResetMassData();
 }

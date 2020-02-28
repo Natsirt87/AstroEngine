@@ -33,9 +33,7 @@ public:
 
 	void SetSize(float x, float y); //Set size of AABB
 
-	virtual void Move(float x, float y);
 	virtual void SetVelocity(float x, float y);
-	virtual void AddVelocity(float x, float y);
 
 	virtual void Update(float dt);
 	virtual void Draw(sf::RenderWindow* wind) = 0;

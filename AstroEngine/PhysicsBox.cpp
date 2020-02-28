@@ -7,18 +7,15 @@ PhysicsBox::PhysicsBox(EntityManager* entityMgr)
 }
 
 PhysicsBox::~PhysicsBox()
-{
-	m_world->DestroyBody(m_body);
-}
+{}
 
 void PhysicsBox::Create(float sizeX, float sizeY)
 {
 	m_rect.setOrigin(sizeX / 2.f, sizeY / 2.f);
 	m_rect.setSize(sf::Vector2f(sizeX, sizeY));
-	m_boxShape.SetAsBox(conv::PTM(sizeX) / 2.f, conv::PTM(sizeY) / 2.f);
-	m_fixtureDef.shape = &m_boxShape;
-	m_fixtureDef.density = 200;
-	m_body->CreateFixture(&m_fixtureDef);
+	boxFixture = physicsBody.AddBox(sizeX, sizeY, b2Vec2(0, 0), 0);
+	boxFixture->SetDensity(2000);
+	physicsBody.ResetMassData();
 
 	SetSize(sizeX, sizeY);
 }
@@ -37,5 +34,5 @@ void PhysicsBox::Draw(sf::RenderWindow* wind)
 
 void PhysicsBox::OnEntityCollision(BaseEntity* other)
 {
-	//std::cout << "Non phyics overlap isn't cool enough for this physics object" << std::endl;
+	std::cout << "Matthew is gay" << std::endl;
 }

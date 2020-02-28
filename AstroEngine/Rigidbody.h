@@ -13,9 +13,9 @@ public:
 	Rigidbody(b2World* world);
 	~Rigidbody();
 
-	const b2Fixture* AddBox(float sizeX, float sizeY, const b2Vec2& offset, float angle); //Add a box fixture to the body
-	const b2Fixture* AddPolygon(const b2Vec2* points, int32 count); //Add a polygon fixture to the body
-	const b2Fixture* AddCircle(float radius, const b2Vec2& offset); //Add a circle fixture to the body
+	b2Fixture* AddBox(float sizeX, float sizeY, const b2Vec2& offset, float angle); //Add a box fixture to the body
+	b2Fixture* AddPolygon(const b2Vec2* points, int32 count); //Add a polygon fixture to the body
+	b2Fixture* AddCircle(float radius, const b2Vec2& offset); //Add a circle fixture to the body
 
 	void RemoveCollider(b2Fixture* fixture); //Remove a fixture from the body
 
@@ -37,6 +37,7 @@ public:
 	void ApplyLinearImpulse(const sf::Vector2f& impulse, const sf::Vector2f& point);
 	void ApplyLinearImpulseToCenter(const sf::Vector2f& impulse);
 	void ApplyTorque(float torque);
+	void ResetMassData();
 
 private:
 	b2World* m_world;

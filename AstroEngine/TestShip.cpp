@@ -15,7 +15,6 @@ TestShip::TestShip(EntityManager* entityMgr)
 
 TestShip::~TestShip()
 {
-	m_world->DestroyBody(m_body);
 	EventManager* eventMgr = m_entityMgr->GetContext()->m_eventManager;
 	eventMgr->RemoveCallback(StateType::Game, "Game_StartThrust");
 	eventMgr->RemoveCallback(StateType::Game, "Game_StopThrust");
@@ -53,10 +52,8 @@ void TestShip::spriteSheetSetup()
 
 void TestShip::physicsSetup()
 {
-	m_collider.SetAsBox(conv::PTM(m_size.x) / 2.f, conv::PTM(m_size.y) / 2.f);
-	m_fixtureDef.shape = &m_collider;
-	m_fixtureDef.density = 1;
-	m_body->CreateFixture(&m_fixtureDef);
+	sf::Vector2i size = m_spriteSheet.GetSpriteSize();
+	boxFixture = physicsBody.AddBox(size.x, size.y, b2Vec2(0, 0), 0);
 }
 
 void TestShip::animate()
@@ -84,7 +81,7 @@ void TestShip::thrust(EventDetails* details)
 		float fx = cos(conv::DTR(GetAngle() - 90)) * 50;
 		float fy = sin(conv::DTR(GetAngle() - 90)) * 50;
 
-		ApplyForceToCenter(sf::Vector2f(fx, fy));
+		physicsBody.ApplyForceToCenter(sf::Vector2f(fx, fy));
 	}
 	else
 	{

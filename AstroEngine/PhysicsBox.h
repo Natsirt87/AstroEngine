@@ -14,9 +14,8 @@ public:
 
 protected:
 	virtual void OnEntityCollision(BaseEntity* other);
-
-	b2PolygonShape m_boxShape;
-	b2FixtureDef m_fixtureDef;
+	
+	b2Fixture* boxFixture;
 	sf::RectangleShape m_rect;
 };
 
