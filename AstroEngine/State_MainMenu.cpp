@@ -78,7 +78,7 @@ void State_MainMenu::Deactivate() { m_timePassed = 0; }
 
 void State_MainMenu::Update(const sf::Time& time) 
 {
-	if (m_timePassed <= 1.0)
+	if (m_timePassed <= 0.9)
 	{
 		m_timePassed += time.asSeconds();
 		for (int i = 0; i < 3; i++)

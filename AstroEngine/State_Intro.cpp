@@ -19,7 +19,7 @@ void State_Intro::OnCreate()
 	m_introSprite.setScale(0.75, 0.75);
 	m_introSprite.setOrigin(m_introTexture.getSize().x / 2.f,
 		m_introTexture.getSize().y / 2.f);
-	m_introSprite.setPosition(windowSize.x / 2.f, windowSize.y / 2.f);
+	m_introSprite.setPosition(windowSize.x / 2.f, windowSize.y / 1.8f);
 
 	m_font.loadFromFile("Resources/Fonts/arial.ttf");
 	m_text.setFont(m_font);
@@ -28,7 +28,7 @@ void State_Intro::OnCreate()
 	sf::FloatRect textRect = m_text.getLocalBounds();
 	m_text.setOrigin(textRect.left + textRect.width / 2.f,
 		textRect.top + textRect.height / 2.f);
-	m_text.setPosition(windowSize.x / 2.f, windowSize.y / 1.6f);
+	m_text.setPosition(windowSize.x / 2.f, windowSize.y / 1.5f);
 
 	EventManager* eventMgr = m_stateMgr->GetContext()->m_eventManager;
 	eventMgr->AddCallback(StateType::Intro, "Intro_Continue",
