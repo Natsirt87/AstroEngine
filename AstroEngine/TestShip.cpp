@@ -3,7 +3,9 @@
 
 TestShip::TestShip(EntityManager* entityMgr) 
 	: PhysicsEntity(entityMgr),
-	m_spriteSheet(m_entityMgr->GetContext()->m_textureManager)
+	m_spriteSheet(m_entityMgr->GetContext()->m_textureManager),
+	thrustForce(100),
+	rotationTorque(250)
 {
 	spriteSheetSetup();
 	physicsSetup();
@@ -15,10 +17,17 @@ TestShip::TestShip(EntityManager* entityMgr)
 
 TestShip::~TestShip()
 {
-	m_world->DestroyBody(m_body);
 	EventManager* eventMgr = m_entityMgr->GetContext()->m_eventManager;
 	eventMgr->RemoveCallback(StateType::Game, "Game_StartThrust");
 	eventMgr->RemoveCallback(StateType::Game, "Game_StopThrust");
+}
+
+void TestShip::PhysicsCollisionStart(PhysicsEntity* other)
+{
+}
+
+void TestShip::PhysicsCollisionEnd(PhysicsEntity* other)
+{
 }
 
 void TestShip::Update(float dt)
@@ -53,10 +62,10 @@ void TestShip::spriteSheetSetup()
 
 void TestShip::physicsSetup()
 {
-	m_collider.SetAsBox(conv::PTM(m_size.x) / 2.f, conv::PTM(m_size.y) / 2.f);
-	m_fixtureDef.shape = &m_collider;
-	m_fixtureDef.density = 1;
-	m_body->CreateFixture(&m_fixtureDef);
+	sf::Vector2i size = m_spriteSheet.GetSpriteSize();
+	boxFixture = rigidbody.AddBox(size.x, size.y, b2Vec2(0, 0), 0);
+	boxFixture->SetDensity(5);
+	rigidbody.ResetMassData();
 }
 
 void TestShip::animate()
@@ -81,10 +90,10 @@ void TestShip::thrust(EventDetails* details)
 	{
 		animState = AnimState::Thrusting;
 
-		float fx = cos(conv::DTR(GetAngle() - 90)) * 50;
-		float fy = sin(conv::DTR(GetAngle() - 90)) * 50;
+		float fx = cos(conv::DTR(GetAngle() - 90)) * thrustForce;
+		float fy = sin(conv::DTR(GetAngle() - 90)) * thrustForce;
 
-		ApplyForceToCenter(sf::Vector2f(fx, fy));
+		rigidbody.ApplyForceToCenter(sf::Vector2f(fx, fy));
 	}
 	else
 	{
@@ -101,5 +110,24 @@ void TestShip::rotateToMouse()
 	float dx = mousePos.x - windowSize.x/2.f;
 	float dy = mousePos.y - windowSize.y/2.f;
 
-	SetAngle(conv::RTD(atan2f(dy, dx)) + 90);
+	float desiredAngle = conv::RTD(atan2f(dy, dx)) + 90;
+
+	if (desiredAngle < 0)
+	{
+		desiredAngle = fmod(desiredAngle, 360);
+		while (desiredAngle < 0)
+		{
+			desiredAngle += 360.0;
+		}
+	}
+
+	float bodyAngle = rigidbody.GetAngle();
+	float nextAngle = bodyAngle + rigidbody.GetAngularVelocity() / 3.0;
+	float totalRotation = desiredAngle - nextAngle;
+
+	while (totalRotation < -180) totalRotation += 360;
+	while (totalRotation > 180) totalRotation -= 360;
+	
+	float torque = totalRotation < 0 ? -rotationTorque : rotationTorque;
+	rigidbody.ApplyTorque(torque);
 }

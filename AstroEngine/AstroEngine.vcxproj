@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Libraries\SFML-2.5.1\include;C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Libraries\Box2D\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,6 +142,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Libraries\SFML-2.5.1\include;C:\Users\Trist\OneDrive\Documents\Programming\Visual Studio\Libraries\Box2D\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,19 +158,20 @@
     <ClCompile Include="Anim_Directional.cpp" />
     <ClCompile Include="Anim_Standard.cpp" />
     <ClCompile Include="BaseEntity.cpp" />
+    <ClCompile Include="ContactListener.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PhysicsEntity.cpp" />
     <ClCompile Include="PhysicsBox.cpp" />
+    <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="State_Game.cpp" />
     <ClCompile Include="State_Intro.cpp" />
     <ClCompile Include="State_MainMenu.cpp" />
     <ClCompile Include="State_Paused.cpp" />
-    <ClCompile Include="TestCharacter.cpp" />
     <ClCompile Include="TestShip.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -177,6 +180,7 @@
     <ClInclude Include="Anim_Directional.h" />
     <ClInclude Include="Anim_Standard.h" />
     <ClInclude Include="BaseState.h" />
+    <ClInclude Include="ContactListener.h" />
     <ClInclude Include="Converter.h" />
     <ClInclude Include="Directions.h" />
     <ClInclude Include="BaseEntity.h" />
@@ -186,6 +190,7 @@
     <ClInclude Include="PhysicsEntity.h" />
     <ClInclude Include="PhysicsBox.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="SharedContext.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="StateManager.h" />
@@ -193,7 +198,6 @@
     <ClInclude Include="State_Intro.h" />
     <ClInclude Include="State_MainMenu.h" />
     <ClInclude Include="State_Paused.h" />
-    <ClInclude Include="TestCharacter.h" />
     <ClInclude Include="TestShip.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Utilities.h" />

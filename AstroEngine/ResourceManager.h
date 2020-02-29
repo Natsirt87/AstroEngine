@@ -37,6 +37,7 @@ public:
 			++res->second;
 			return true;
 		}
+		std::cout << "Loading resource " << id << std::endl;
 		auto path = m_paths.find(id);
 		if (path == m_paths.end()) { return false; }
 		T* resource = Load(path->second);
@@ -92,6 +93,7 @@ private:
 
 	void loadPaths(const std::string& pathFile)
 	{
+		std::cout << "Initializing texture resources... ";
 		std::ifstream paths;
 		paths.open(pathFile);
 
@@ -108,6 +110,7 @@ private:
 				keystream >> path;
 				m_paths.emplace(pathName, path);
 			}
+			std::cout << "done." << std::endl;
 			paths.close();
 			return;
 		}

@@ -10,6 +10,9 @@ public:
 	TestShip(EntityManager* entityMgr);
 	virtual ~TestShip();
 
+	virtual void PhysicsCollisionStart(PhysicsEntity* other) override;
+	virtual void PhysicsCollisionEnd(PhysicsEntity* other) override;
+
 	virtual void Update(float dt) override;
 	virtual void Draw(sf::RenderWindow* wind) override;
 
@@ -22,11 +25,12 @@ protected:
 	void animate();
 	void thrust(EventDetails* details);
 	void rotateToMouse();
+	
+	float thrustForce;
+	float rotationTorque;
 
-	b2PolygonShape m_collider;
-	b2FixtureDef m_fixtureDef;
+	b2Fixture* boxFixture;
 	SpriteSheet m_spriteSheet;
-
 	AnimState animState;
 };
 

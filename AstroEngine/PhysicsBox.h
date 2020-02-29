@@ -9,14 +9,16 @@ public:
 
 	void Create(float sizeX, float sizeY);
 
+	virtual void PhysicsCollisionStart(PhysicsEntity* other) override;
+	virtual void PhysicsCollisionEnd(PhysicsEntity* other) override;
+
 	virtual void Update(float dt) override;
 	virtual void Draw(sf::RenderWindow* wind) override;
 
 protected:
 	virtual void OnEntityCollision(BaseEntity* other);
-
-	b2PolygonShape m_boxShape;
-	b2FixtureDef m_fixtureDef;
+	
+	b2Fixture* boxFixture;
 	sf::RectangleShape m_rect;
 };
 

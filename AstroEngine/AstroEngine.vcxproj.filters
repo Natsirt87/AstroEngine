@@ -32,9 +32,6 @@
     <ClCompile Include="Anim_Standard.cpp">
       <Filter>Animation</Filter>
     </ClCompile>
-    <ClCompile Include="TestCharacter.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>General</Filter>
     </ClCompile>
@@ -54,6 +51,10 @@
     <ClCompile Include="TestShip.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactListener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EventManager.h">
@@ -104,9 +105,6 @@
     <ClInclude Include="Utilities.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="TestCharacter.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>General</Filter>
     </ClInclude>
@@ -127,6 +125,10 @@
     <ClInclude Include="TestShip.h">
       <Filter>Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactListener.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="States">
