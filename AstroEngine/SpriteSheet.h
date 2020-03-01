@@ -7,14 +7,15 @@
 #include "Anim_Standard.h"
 #include "Utilities.h"
 #include "Anim_Base.h"
+#include "BaseComponent.h"
 
 
 using Animations = std::unordered_map<std::string, Anim_Base*>;
 
-class SpriteSheet
+class SpriteSheet : public BaseComponent
 {
 public:
-	SpriteSheet(TextureManager* textMgr);
+	SpriteSheet(TextureManager* textMgr, Entity* owner);
 	~SpriteSheet();
 
 	void CropSprite(const sf::IntRect& rect);

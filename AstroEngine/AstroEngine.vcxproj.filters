@@ -39,9 +39,6 @@
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="BaseEntity.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
     <ClCompile Include="PhysicsEntity.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
@@ -54,7 +51,15 @@
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="ContactListener.cpp" />
+    <ClCompile Include="BaseComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="SFMLDebugDraw.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EventManager.h">
@@ -112,10 +117,6 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Converter.h" />
-    <ClInclude Include="BaseEntity.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
     <ClInclude Include="PhysicsEntity.h">
       <Filter>Entities</Filter>
     </ClInclude>
@@ -128,7 +129,21 @@
     <ClInclude Include="Rigidbody.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="ContactListener.h" />
+    <ClInclude Include="ContactListener.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="SFMLDebugDraw.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Converter.h">
+      <Filter>General</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="States">

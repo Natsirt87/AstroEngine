@@ -3,9 +3,9 @@
 
 TestShip::TestShip(EntityManager* entityMgr) 
 	: PhysicsEntity(entityMgr),
-	m_spriteSheet(m_entityMgr->GetContext()->m_textureManager),
-	thrustForce(100),
-	rotationTorque(250)
+	m_spriteSheet(m_entityMgr->GetContext()->m_textureManager, this),
+	thrustForce(180),
+	rotationTorque(150)
 {
 	spriteSheetSetup();
 	physicsSetup();
@@ -22,11 +22,11 @@ TestShip::~TestShip()
 	eventMgr->RemoveCallback(StateType::Game, "Game_StopThrust");
 }
 
-void TestShip::PhysicsCollisionStart(PhysicsEntity* other)
+void TestShip::PhysicsCollisionStart(Entity* other)
 {
 }
 
-void TestShip::PhysicsCollisionEnd(PhysicsEntity* other)
+void TestShip::PhysicsCollisionEnd(Entity* other)
 {
 }
 
@@ -46,7 +46,7 @@ void TestShip::Draw(sf::RenderWindow* wind)
 	m_spriteSheet.Draw(wind);
 }
 
-void TestShip::OnEntityCollision(BaseEntity* other)
+void TestShip::OnKinematicCollision(Entity* other)
 {
 }
 
@@ -63,8 +63,37 @@ void TestShip::spriteSheetSetup()
 void TestShip::physicsSetup()
 {
 	sf::Vector2i size = m_spriteSheet.GetSpriteSize();
-	boxFixture = rigidbody.AddBox(size.x, size.y, b2Vec2(0, 0), 0);
-	boxFixture->SetDensity(5);
+
+	b2Vec2 hullPoints[7] =
+	{
+		b2Vec2(0, -53),
+		b2Vec2(12, -47),
+		b2Vec2(12, 22),
+		b2Vec2(16, 36),
+		b2Vec2(-16, 36),
+		b2Vec2(12, -22),
+		b2Vec2(-12, -47)
+	};
+	b2Fixture* hullFixture = rigidbody.AddPolygon(hullPoints, 7);
+	
+	b2Vec2 wingPoints[4] =
+	{
+		b2Vec2(-12, -14),
+		b2Vec2(-67, -1),
+		b2Vec2(-75, 17),
+		b2Vec2(-12, 12)
+	};
+	b2Fixture* wingLFixture = rigidbody.AddPolygon(wingPoints, 4);
+
+	wingPoints[0] = b2Vec2(12, -14);
+	wingPoints[1] = b2Vec2(67, -1);
+	wingPoints[2] = b2Vec2(75, 17);
+	wingPoints[3] = b2Vec2(12, 12);
+	b2Fixture* wingRFixture = rigidbody.AddPolygon(wingPoints, 4);
+
+	hullFixture->SetDensity(20);
+	wingLFixture->SetDensity(20);
+	wingRFixture->SetDensity(20);
 	rigidbody.ResetMassData();
 }
 
@@ -122,7 +151,7 @@ void TestShip::rotateToMouse()
 	}
 
 	float bodyAngle = rigidbody.GetAngle();
-	float nextAngle = bodyAngle + rigidbody.GetAngularVelocity() / 3.0;
+	float nextAngle = bodyAngle + rigidbody.GetAngularVelocity() / 4.0;
 	float totalRotation = desiredAngle - nextAngle;
 
 	while (totalRotation < -180) totalRotation += 360;

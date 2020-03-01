@@ -1,8 +1,9 @@
 #include "SpriteSheet.h"
 #include "Anim_Base.h"
 
-SpriteSheet::SpriteSheet(TextureManager* textMgr) 
-	: m_textureManager(textMgr), m_animationCurrent(nullptr),
+SpriteSheet::SpriteSheet(TextureManager* textMgr, Entity* owner) 
+	: BaseComponent(owner), m_textureManager(textMgr), 
+	m_animationCurrent(nullptr),
 	m_spriteScale(1.f, 1.f), m_direction(Direction::Right) {}
 
 SpriteSheet::~SpriteSheet() { ReleaseSheet(); }

@@ -5,7 +5,8 @@
 #include "SpriteSheet.h"
 #include "StateManager.h"
 #include "box2d/box2d.h"
-#include "BaseEntity.h"
+#include "Entity.h"
+#include "SFMLDebugDraw.h"
 
 class PhysicsBox;
 class TestShip;
@@ -29,12 +30,18 @@ public:
 
 private:
 	void zoom(EventDetails* details);
+	void toggleDebug(EventDetails* details);
 
 	sf::Texture* m_backTex;
 	sf::Sprite m_background;
 
 	b2World* m_world;
 	TestShip* m_ship;
-	BaseEntity* m_player;
+	Entity* m_player;
+
+	b2ThreadPoolTaskExecutor m_taskExecutor;
+	SFMLDebugDraw m_debugDraw;
+
+	bool m_debugDrawMode;
 };
 

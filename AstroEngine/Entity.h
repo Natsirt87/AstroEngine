@@ -13,12 +13,12 @@ enum class EntityType{
 };
 
 class EntityManager;
-class BaseEntity
+class Entity
 {
 	friend class EntityManager;
 public:
-	BaseEntity(EntityManager* entityMgr);
-	virtual ~BaseEntity();
+	Entity(EntityManager* entityMgr);
+	virtual ~Entity();
 
 	virtual const sf::Vector2f& GetPosition()const;
 	virtual const sf::Vector2f& GetVelocity()const;
@@ -42,7 +42,7 @@ protected:
 	void updateAABB();
 
 	//What this entity does to the other entity that collides/overlaps with AABB
-	virtual void OnEntityCollision(BaseEntity* other) = 0;
+	virtual void OnKinematicCollision(Entity* other) = 0;
 
 	std::string m_name;
 	EntityType m_type;

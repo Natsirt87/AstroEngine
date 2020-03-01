@@ -1,10 +1,12 @@
 #include "PhysicsEntity.h"
 
 PhysicsEntity::PhysicsEntity(EntityManager* entityMgr) 
-	: BaseEntity(entityMgr), rigidbody(entityMgr->GetContext()->m_world)
+	: Entity(entityMgr), rigidbody(entityMgr->GetContext()->m_world, this)
 { 
 	m_type = EntityType::PhysicsObject; 
-	rigidbody.SetUserData(this);
+	rigidbody.RegisterCollisionFunctions(
+		&PhysicsEntity::PhysicsCollisionStart, 
+		&PhysicsEntity::PhysicsCollisionEnd, this);
 }
 
 PhysicsEntity::~PhysicsEntity()
@@ -39,6 +41,5 @@ void PhysicsEntity::Update(float dt)
 {
 	m_position = rigidbody.GetPosition();
 	m_velocity = rigidbody.GetVelocity();
-	
 	updateAABB();
 }

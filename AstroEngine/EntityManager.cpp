@@ -13,28 +13,30 @@ EntityManager::EntityManager(SharedContext* context, unsigned int maxEntities)
 
 EntityManager::~EntityManager() { Purge(); }
 
-int EntityManager::Add(const EntityType& type, const std::string& name)
+int EntityManager::Add(const EntityType& type, const std::string& name, bool kinematic)
 {
 	auto itr = m_entityFactory.find(type);
 	if (itr == m_entityFactory.end()) { return -1; }
-	BaseEntity* entity = itr->second();
+	Entity* entity = itr->second();
 	entity->m_id = m_idCounter;
 	if (name != "") { entity->m_name = name; }
 
 	m_entities.emplace(m_idCounter, entity);
 
+	if (kinematic) { m_kinematicEntities.push_back(entity); }
+
 	m_idCounter++;
 	return m_idCounter - 1;
 }
 
-BaseEntity* EntityManager::Find(unsigned int id)
+Entity* EntityManager::Find(unsigned int id)
 {
 	auto itr = m_entities.find(id);
 	if (itr == m_entities.end()) { return nullptr; }
 	return itr->second;
 }
 
-BaseEntity* EntityManager::Find(const std::string& name)
+Entity* EntityManager::Find(const std::string& name)
 {
 	for (auto& itr : m_entities)
 	{
@@ -58,7 +60,7 @@ void EntityManager::Update(float dt)
 		itr.second->Update(dt);
 	}
 
-	entityCollisionCheck();
+	kinematicCollisionCheck();
 	processRemovals();
 }
 
@@ -102,21 +104,21 @@ void EntityManager::processRemovals()
 	}
 }
 
-void EntityManager::entityCollisionCheck()
+void EntityManager::kinematicCollisionCheck()
 {
 	if (m_entities.empty()) { return; }
 
-	for (auto itr = m_entities.begin(); std::next(itr) != m_entities.end(); itr++)
+	for (int i = 0; i < m_kinematicEntities.size(); i++)
 	{
-		for (auto itr2 = std::next(itr); itr2 != m_entities.end(); itr2++)
+		for (int j = i + 1; j < m_kinematicEntities.size(); j++)
 		{
-			if (itr->first == itr2->first) { continue; }
+			Entity* first = m_kinematicEntities[i];
+			Entity* second = m_kinematicEntities[j];
 
-			//Do run collision methods on basic bounding overlap
-			if (itr->second->m_AABB.intersects(itr2->second->m_AABB))
+			if (first->m_AABB.intersects(second->m_AABB))
 			{
-				itr->second->OnEntityCollision(itr2->second);
-				itr2->second->OnEntityCollision(itr->second);
+				first->OnKinematicCollision(second);
+				second->OnKinematicCollision(first);
 			}
 		}
 	}
