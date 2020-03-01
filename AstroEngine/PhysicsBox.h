@@ -1,6 +1,8 @@
 #pragma once
 #include "PhysicsEntity.h"
 
+/* A basic test of physics and collision, just a white box with physics. */
+
 class PhysicsBox : public PhysicsEntity
 {
 public:

@@ -8,6 +8,10 @@
 #include "Entity.h"
 #include "SFMLDebugDraw.h"
 
+/* The primary application state, this will be responsible for logic that
+can't be abstracted to other objects, as well as whatever else you want it 
+to do. */
+
 class PhysicsBox;
 class TestShip;
 class State_Game : public BaseState
@@ -25,12 +29,12 @@ public:
 	void Update(const sf::Time& time);
 	void Draw();
 
-	void MainMenu(EventDetails* details);
-	void Pause(EventDetails* details);
+	void MainMenu(EventDetails* details); //Switch to the Main Menu state
+	void Pause(EventDetails* details); //Switch to the Paused state
 
 private:
-	void zoom(EventDetails* details);
-	void toggleDebug(EventDetails* details);
+	void zoom(EventDetails* details); //Bound to middle mouse, zooms in and out the view
+	void toggleDebug(EventDetails* details); //Toggles the drawing of Box2D collision shapes for debug purposes
 
 	sf::Texture* m_backTex;
 	sf::Sprite m_background;

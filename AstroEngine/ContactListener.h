@@ -1,5 +1,9 @@
 #pragma once
 #include "Rigidbody.h"
+
+/* Custom contact listener that calls the collision functions for things
+that collide (currently only rigidbodies). */
+
 class ContactListener : public b2ContactListener
 {
 	void BeginContact(b2Contact* contact) override

@@ -2,6 +2,9 @@
 #include "BaseState.h"
 #include "EventManager.h"
 
+/* The intro application state, the very first thing the user sees
+after starting the application. */
+
 class State_Intro : public BaseState
 {
 public:
@@ -17,7 +20,7 @@ public:
 	void Update(const sf::Time& time);
 	void Draw();
 
-	void Continue(EventDetails* details);
+	void Continue(EventDetails* details); //Moves on to the Main Menu state whan a key is pressed (space is default)
 
 private:
 	sf::Texture m_introTexture;

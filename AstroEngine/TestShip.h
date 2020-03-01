@@ -2,6 +2,9 @@
 #include "PhysicsEntity.h"
 #include "SpriteSheet.h"
 
+/* A ship for testing systems in the game engine, also
+acts as an example for how to use certain things. */
+
 enum class AnimState{ Thrusting, Idle };
 
 class TestShip : public PhysicsEntity

@@ -6,6 +6,12 @@
 #include <SFML/System/Vector2.hpp>
 #include "BaseComponent.h"
 
+/* Currently the only physics component, contains the vast majoriy of what
+you would need for any physically simulated object. Supports multiple fixtures
+(a.k.a. colliders/hitboxes), different shapes, and has some helpful methods that
+automatically convert between Box2D and SFML units, allowing you to only have to
+work with SFML units. */
+
 using CollisionFunction = std::function<void(Entity* other)>;
 using Collider = std::pair<b2FixtureDef*, b2Shape*>;
 using ColliderContainer = std::vector<Collider>;
@@ -50,6 +56,7 @@ public:
 	//Exposed Box2d body getters
 	float GetAngularVelocity();
 	float GetInertia();
+	float GetMass();
 
 	//Exposed Box2d body setters
 

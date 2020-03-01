@@ -3,6 +3,9 @@
 #include "SFML/Window.hpp"
 #include "EventManager.h"
 
+/* The application window, has functionality for displaying, closing, 
+and various other window related activities. */
+
 class Window
 {
 public:

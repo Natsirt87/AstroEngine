@@ -33,7 +33,6 @@ b2Fixture* Rigidbody::AddBox(float sizeX, float sizeY, const b2Vec2& offset, flo
 	fixtureDef->density = 1;
 	fixtureDef->friction = 0.5;
 	m_colliders.emplace_back(fixtureDef, shape);
-	
 
 	return m_body->CreateFixture(fixtureDef);
 }
@@ -115,6 +114,11 @@ float Rigidbody::GetAngularVelocity()
 float Rigidbody::GetInertia()
 {
 	return m_body->GetInertia();
+}
+
+float Rigidbody::GetMass()
+{
+	return m_body->GetMass();
 }
 
 float Rigidbody::GetAngle()

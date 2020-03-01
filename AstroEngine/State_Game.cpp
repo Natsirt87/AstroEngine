@@ -2,6 +2,7 @@
 #include "PhysicsBox.h"
 #include "TestShip.h"
 #include "Box2D/Common/b2Draw.h"
+#include <ctime>
 
 State_Game::State_Game(StateManager* stateManager)
 	: BaseState(stateManager),
@@ -29,24 +30,31 @@ void State_Game::OnCreate()
 	m_ship = (TestShip*)entityMgr->Find("Playerboi");
 	m_ship->SetPosition(windowSize.x / 2.f, windowSize.y / 2.f);
 
-	for (int i = 0; i < 256; i++)
+	std::time_t seed = std::time(nullptr);
+	std::srand(seed);
+
+	for (int i = 0; i < 1500; i++)
 	{
 		entityMgr->Add(EntityType::PhysicsObject, "Box" + std::to_string(i), false);
 		PhysicsBox* box = (PhysicsBox*)entityMgr->Find("Box" + std::to_string(i));
 
 		float boxLengthX = rand() % 200 + 20;
-		float boxLengthY = rand() % 300 + 20;
+		float boxLengthY = rand() % 200 + 20;
 
-		int rowSize = 20;
-		float boxPosX = (i % rowSize) * 500 - 3500;
-		float boxPosY = (i / rowSize) * 500 - 5500;
+		int rowSize = 45;
+		int boxDist = 600;
+		float boxPosX = (i % rowSize) * boxDist - (boxDist * 14);
+		float boxPosY = (i / rowSize) * boxDist - (boxDist* 13);
 
-		float boxVelocityX = rand() % 300 + 30;
-		float boxVelocityY = rand() % 300 + 30;
+		float boxImpulseX = rand() % 2400 - 1200;
+		float boxImpulseY = rand() % 2400 - 1200;
 		
 		box->Create(boxLengthX, boxLengthY);
 		box->SetPosition(boxPosX, boxPosY);
-		box->SetVelocity(boxVelocityX, boxVelocityY);
+
+		float boxMass = box->rigidbody.GetMass();
+
+		box->rigidbody.ApplyLinearImpulseToCenter(sf::Vector2f(boxImpulseX * boxMass, boxImpulseY * boxMass));
 	}
 
 	if (texMgr->RequireResource("FNebula2")) { m_backTex = texMgr->GetResource("FNebula2"); }

@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game() : m_window("Astro", sf::Vector2u(2560, 1440)),
+Game::Game() : m_window("Astro", sf::Vector2u(1920, 1080)),
 m_stateManager(&m_context), m_entityManager(&m_context, 500), m_world(b2Vec2(0,0))
 {
 	m_clock.restart();
@@ -12,6 +12,7 @@ m_stateManager(&m_context), m_entityManager(&m_context, 500), m_world(b2Vec2(0,0
 	m_context.m_entityManager = &m_entityManager;
 	m_context.m_textureManager = &m_textureManager;
 	m_context.m_world = &m_world;
+	m_context.m_rTexture = &m_rTexture;
 
 	m_stateManager.SwitchTo(StateType::Game);
 }
@@ -21,7 +22,7 @@ Game::~Game() {}
 void Game::Run()
 {
 	float fps = 1 / m_elapsed.asSeconds();
-	//std::cout << std::to_string(fps) << std::endl;
+	std::cout << std::to_string(fps) << std::endl;
 	update(m_elapsed);
 	render();
 	lateUpdate(); 

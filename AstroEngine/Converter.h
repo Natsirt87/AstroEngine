@@ -1,5 +1,7 @@
 #pragma once
 
+/* Helper functions to convert between Box2D and SFML units. */
+
 namespace conv
 {
 	constexpr double PIXELS_PER_METERS = 64.0;

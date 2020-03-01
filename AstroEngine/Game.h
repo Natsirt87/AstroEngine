@@ -10,23 +10,26 @@
 #include "EntityManager.h"
 #include "ContactListener.h"
 
+/* Entry point for the application after Main, this class
+is what dictates the most basic application loop */
+
 class Game
 {
 public:
 	Game();
 	~Game();
 
-	void Run(); //Manages method order and stuff like delta time
+	void Run(); //What actually gets called every frame
 
-	sf::Time GetElapsed();
-	Window* GetWindow();
+	sf::Time GetElapsed(); //Get delta time in sf::Time
+	Window* GetWindow(); //Gets a reference to the window
 
 private:
-	void update(sf::Time deltaTime); //Do non visual updating stuff
-	void render(); //Do rendering and drawing stuff
-	void lateUpdate();
+	void update(sf::Time deltaTime); //Does non visual updating stuff
+	void render(); //Does rendering and drawing stuff
+	void lateUpdate(); //Does event processing stuff
 
-	void restartClock();
+	void restartClock(); //Resets the delta time counter
 
 	Window m_window;
 	StateManager m_stateManager;
@@ -34,6 +37,7 @@ private:
 	TextureManager m_textureManager;
 	b2World m_world;
 	ContactListener m_contactListener;
+	sf::RenderTexture m_rTexture;
 
 	SharedContext m_context;
 

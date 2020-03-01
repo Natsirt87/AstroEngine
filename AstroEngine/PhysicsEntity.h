@@ -3,6 +3,9 @@
 #include "Rigidbody.h"
 #include "SharedContext.h"
 
+/* A helpful little abstract class that just does stuff to 
+a rigidbody when Entity methods are called. */
+
 class PhysicsEntity : public Entity
 {
 public:
@@ -23,10 +26,9 @@ public:
 	virtual void Update(float dt);
 	virtual void Draw(sf::RenderWindow* wind) = 0;
 
+	Rigidbody rigidbody;
 protected:
 	virtual void OnKinematicCollision(Entity* other) = 0;
-	
-	Rigidbody rigidbody; 
 	
 };
 

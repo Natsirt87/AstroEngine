@@ -3,6 +3,9 @@
 #include <functional>
 #include "Entity.h"
 
+/* Manages all entities and is responsible for calling their update and
+draw methods.*/
+
 using EntityContainer = std::unordered_map<
 	unsigned int, Entity*>;
 using EntityFactory = std::unordered_map<

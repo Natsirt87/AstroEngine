@@ -4,7 +4,7 @@
 TestShip::TestShip(EntityManager* entityMgr) 
 	: PhysicsEntity(entityMgr),
 	m_spriteSheet(m_entityMgr->GetContext()->m_textureManager, this),
-	thrustForce(180),
+	thrustForce(200),
 	rotationTorque(150)
 {
 	spriteSheetSetup();

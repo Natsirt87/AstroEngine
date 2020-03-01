@@ -5,6 +5,9 @@
 #include <algorithm>
 #include <stdlib.h>
 
+/* Currently unused, attempt at having some utility functions
+but I haven't found it necessary. */
+
 namespace Utils
 {
 	#ifdef RUNNING_WINDOWS

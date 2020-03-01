@@ -2,6 +2,10 @@
 #include "BaseState.h"
 #include "EventManager.h"
 
+/* Main menu application state, what the user sees after the intro.
+Should probably contain a GUI for the user to play the game, change
+settings, and quit the application. */
+
 class State_MainMenu : public BaseState
 {
 public:
@@ -17,7 +21,7 @@ public:
 	void Update(const sf::Time& time);
 	void Draw();
 
-	void MouseClick(EventDetails* details);
+	void MouseClick(EventDetails* details); //Mouse click event for GUI stuff
 
 private:
 	sf::Font m_titleFont;

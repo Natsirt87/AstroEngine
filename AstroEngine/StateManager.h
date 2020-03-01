@@ -9,6 +9,9 @@
 #include "SharedContext.h"
 #include "EventManager.h"
 
+/* Manages all the states, responsible for their creation, removal, 
+activation, deactivation, update, draw, etc. */
+
 enum class StateType{ Intro = 1, MainMenu, Game, Paused, GameOver, Credits };
 
 using StateContainer = std::vector<std::pair<StateType, BaseState*>>;
@@ -22,23 +25,23 @@ public:
 	StateManager(SharedContext* shared);
 	~StateManager();
 
-	void Update(const sf::Time& time);
-	void Draw();
+	void Update(const sf::Time& time); //Updates all relevant states
+	void Draw(); //Draw all relevant states
 
-	void ProcessRequests();
+	void ProcessRequests(); //Removes states that are up for removal
 
-	SharedContext* GetContext();
-	bool HasState(const StateType& type);
+	SharedContext* GetContext(); //Gets the shared context
+	bool HasState(const StateType& type); //Checks whether a state exists
 
-	void SwitchTo(const StateType& type);
-	void Remove(const StateType& type);
+	void SwitchTo(const StateType& type); //Switches to a state
+	void Remove(const StateType& type); //Removes a state
 
 private:
-	void createState(const StateType& type);
-	void removeState(const StateType& type);
+	void createState(const StateType& type); //State creation helper method
+	void removeState(const StateType& type); //State removal helper method
 
 	template<class T>
-	void registerState(const StateType& type)
+	void registerState(const StateType& type) //Registers a state class with a state type for the state factory
 	{
 		m_stateFactory[type] = [this]() -> BaseState*
 		{

@@ -9,6 +9,8 @@
 #include "Anim_Base.h"
 #include "BaseComponent.h"
 
+/* The component responsible for animation, contains all sorts of animation
+functionality. Uses a spritesheet (if you couldn't tell from the name). */
 
 using Animations = std::unordered_map<std::string, Anim_Base*>;
 

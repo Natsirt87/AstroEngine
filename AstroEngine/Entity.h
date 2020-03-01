@@ -4,6 +4,9 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
+/* The abstract parent of all entities, contains base functionality common
+to every entity. */
+
 enum class EntityType{ 
 	Base, 
 	PhysicsObject, 
