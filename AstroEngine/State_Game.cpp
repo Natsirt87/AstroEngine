@@ -33,7 +33,7 @@ void State_Game::OnCreate()
 
 	std::time_t seed = std::time(nullptr);
 	std::srand(seed);
-	for (int i = 0; i < 512; i++)
+	for (int i = 0; i < 256; i++)
 	{
 		entityMgr->Add(EntityType::PhysicsObject, "Box" + std::to_string(i), false);
 		PhysicsBox* box = (PhysicsBox*)entityMgr->Find("Box" + std::to_string(i));
@@ -41,13 +41,13 @@ void State_Game::OnCreate()
 		float boxLengthX = rand() % 300 + 20;
 		float boxLengthY = rand() % 300 + 20;
 
-		int rowSize = 33;
+		int rowSize = 20;
 		int boxDist = 600;
 		float boxPosX = (i % rowSize) * boxDist - (boxDist * 14);
 		float boxPosY = (i / rowSize) * boxDist - (boxDist* 6);
 
-		float boxImpulseX = rand() % 2400 - 1200;
-		float boxImpulseY = rand() % 2400 - 1200;
+		float boxImpulseX = rand() % 1000 - 500;
+		float boxImpulseY = rand() % 1000 - 500;
 		
 		box->Create(boxLengthX, boxLengthY);
 		box->SetPosition(boxPosX, boxPosY);
@@ -117,7 +117,7 @@ void State_Game::Pause(EventDetails* details)
 void State_Game::setupGlobalShader()
 {
 	std::cout << "Setting up global shaders" << std::endl;
-	ShaderManager* shaderMgr = m_stateMgr->GetContext()->m_shaderManager;
+	/*ShaderManager* shaderMgr = m_stateMgr->GetContext()->m_shaderManager;
 
 	if (shaderMgr->RequireResource("Wobbly"))
 	{
@@ -126,7 +126,7 @@ void State_Game::setupGlobalShader()
 		m_globalShader->setUniform("uPositionFreq", 0.05f);
 		m_globalShader->setUniform("uSpeed", 5.f);
 		m_globalShader->setUniform("uStrength", 0.002f);
-	}
+	}*/
 }
 
 void State_Game::updateGlobalShader(const sf::Texture* tex)

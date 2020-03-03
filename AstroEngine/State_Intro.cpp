@@ -2,7 +2,7 @@
 #include "StateManager.h"
 
 State_Intro::State_Intro(StateManager* stateManager)
-	: BaseState(stateManager) {}
+	: BaseState(stateManager), m_timePassed(0.f) {}
 
 State_Intro::~State_Intro() {}
 

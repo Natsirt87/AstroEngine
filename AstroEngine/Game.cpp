@@ -39,7 +39,9 @@ void Game::Run()
 	render();
 	lateUpdate(); 
 	float fps = 1 / m_elapsed.asSeconds();
-	//std::cout << "FPS: " << std::to_string((int)fps) << std::endl;
+	std::string fpsStr = "FPS: " + std::to_string((int)fps);
+	std::cout << fpsStr;
+	std::cout << std::string(fpsStr.length(), '\b');
 }
 
 void Game::update(sf::Time deltaTime)

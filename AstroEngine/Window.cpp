@@ -84,6 +84,6 @@ sf::FloatRect Window::GetViewSpace()
 void Window::create() //Make the actual SFML window
 {
 	sf::Uint32 style = (m_isFullscreen ? sf::Style::Fullscreen : sf::Style::Default);
-	m_window.create({ m_windowSize.x, m_windowSize.y, 32 }, "Astro Game", style);
+	m_window.create({ m_windowSize.x, m_windowSize.y, 64 }, "Astro Game", style);
 	m_window.setFramerateLimit(144);
 }
