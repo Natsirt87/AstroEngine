@@ -24,11 +24,10 @@ public:
 	virtual void PhysicsCollisionEnd(Entity* other) = 0;
 	
 	virtual void Update(float dt);
-	virtual void Draw(sf::RenderWindow* wind) = 0;
+	virtual void Draw(sf::RenderTexture* render) = 0;
 
 	Rigidbody rigidbody;
 protected:
 	virtual void OnKinematicCollision(Entity* other) = 0;
-	
 };
 

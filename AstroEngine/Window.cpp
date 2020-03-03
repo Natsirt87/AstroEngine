@@ -1,8 +1,10 @@
 #include "Window.h"
+#include "SharedContext.h"
 
 Window::Window() { setup("Window", sf::Vector2u(640, 480)); }
 
-Window::Window(const std::string& title, const sf::Vector2u& size)
+Window::Window(const std::string& title, const sf::Vector2u& size, SharedContext* context)
+	: m_context(context)
 {
 	setup(title, size);
 }
@@ -71,8 +73,9 @@ sf::Vector2u Window::GetWindowSize() { return m_windowSize; }
 
 sf::FloatRect Window::GetViewSpace()
 {
-	sf::Vector2f viewCenter = m_window.getView().getCenter();
-	sf::Vector2f viewSize = m_window.getView().getSize();
+	sf::RenderTexture* render = m_context->m_renderBuffer;
+	sf::Vector2f viewCenter = render->getView().getCenter();
+	sf::Vector2f viewSize = render->getView().getSize();
 	sf::Vector2f viewSizeHalf(viewSize.x / 2, viewSize.y / 2);
 	sf::FloatRect viewSpace(viewCenter - viewSizeHalf, viewSize);
 	return viewSpace;

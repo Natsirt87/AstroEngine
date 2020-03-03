@@ -41,9 +41,9 @@ void TestShip::Update(float dt)
 	animate();
 }
 
-void TestShip::Draw(sf::RenderWindow* wind)
+void TestShip::Draw(sf::RenderTexture* render)
 {
-	m_spriteSheet.Draw(wind);
+	m_spriteSheet.Draw(render);
 }
 
 void TestShip::OnKinematicCollision(Entity* other)

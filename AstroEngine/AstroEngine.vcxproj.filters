@@ -60,6 +60,12 @@
     <ClCompile Include="SFMLDebugDraw.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="PostEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="BloomEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EventManager.h">
@@ -83,9 +89,6 @@
     <ClInclude Include="State_Paused.h">
       <Filter>States</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
     <ClInclude Include="Anim_Base.h">
       <Filter>Animation</Filter>
     </ClInclude>
@@ -94,9 +97,6 @@
     </ClInclude>
     <ClInclude Include="Anim_Directional.h">
       <Filter>Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="EntityManager.h">
       <Filter>Managers</Filter>
@@ -144,6 +144,21 @@
     <ClInclude Include="Converter.h">
       <Filter>General</Filter>
     </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Managers\Resource Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
+      <Filter>Managers\Resource Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Managers\Resource Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="PostEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="BloomEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="States">
@@ -163,6 +178,12 @@
     </Filter>
     <Filter Include="Components">
       <UniqueIdentifier>{7552ad1d-348c-490c-86f6-50b17b4be2a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Resource Managers">
+      <UniqueIdentifier>{7fc29f2a-bb18-47cd-ac82-d110d7ab8ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effects">
+      <UniqueIdentifier>{77459945-f884-433f-847c-6407153dfde3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

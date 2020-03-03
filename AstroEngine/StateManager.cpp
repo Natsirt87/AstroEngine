@@ -44,6 +44,11 @@ void StateManager::Update(const sf::Time& time)
 	}
 }
 
+void StateManager::UpdateGlobalShader(const sf::Texture* tex)
+{
+	m_states.back().second->updateGlobalShader(tex);
+}
+
 void StateManager::Draw()
 {
 	if (m_states.empty()) { return; }
@@ -64,13 +69,14 @@ void StateManager::Draw()
 		}
 		for (; itr != m_states.end(); itr++)
 		{
-			m_shared->m_wind->GetRenderWindow()->
+			m_shared->m_renderBuffer->
 				setView(itr->second->GetView());
 			itr->second->Draw();
 		}
 	}
 	else
 	{
+		m_shared->m_renderBuffer->setView(m_states.back().second->GetView());
 		m_states.back().second->Draw();
 	}
 }
@@ -113,7 +119,7 @@ void StateManager::SwitchTo(const StateType& type)
 			m_states.erase(itr);
 			m_states.emplace_back(tmp_type, tmp_state);
 			tmp_state->Activate();
-			m_shared->m_wind->GetRenderWindow()->
+			m_shared->m_renderBuffer->
 				setView(tmp_state->GetView());
 			return;
 		}
@@ -132,6 +138,21 @@ void StateManager::Remove(const StateType& type)
 	m_toRemove.push_back(type);
 }
 
+sf::Shader* StateManager::GetGlobalShader()
+{
+	return m_states.back().second->m_globalShader;
+}
+
+const PostEffectSettings& StateManager::GetPostEffects()
+{
+	return m_states.back().second->m_postEffects;
+}
+
+float StateManager::GetCurrentZoom()
+{
+	return m_states.back().second->m_zoom;
+}
+
 void StateManager::createState(const StateType& type)
 {
 	auto newState = m_stateFactory.find(type);
@@ -140,6 +161,7 @@ void StateManager::createState(const StateType& type)
 	state->m_view = m_shared->m_wind->GetRenderWindow()->getDefaultView();
 	m_states.emplace_back(type, state);
 	state->OnCreate();
+	state->setupGlobalShader();
 }
 
 void StateManager::removeState(const StateType& type)

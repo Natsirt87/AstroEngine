@@ -44,7 +44,7 @@ public:
 		const std::string& nextAnim);
 
 	void Update(const float& dt);
-	void Draw(sf::RenderWindow* wnd);
+	void Draw(sf::RenderTexture* rnd);
 
 private:
 	std::string m_texture;

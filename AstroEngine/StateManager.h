@@ -9,9 +9,6 @@
 #include "SharedContext.h"
 #include "EventManager.h"
 
-/* Manages all the states, responsible for their creation, removal, 
-activation, deactivation, update, draw, etc. */
-
 enum class StateType{ Intro = 1, MainMenu, Game, Paused, GameOver, Credits };
 
 using StateContainer = std::vector<std::pair<StateType, BaseState*>>;
@@ -19,6 +16,9 @@ using TypeContainer = std::vector<StateType>;
 using StateFactory = std::unordered_map<StateType, std::function<BaseState*(void)>>;
 
 class SharedContext;
+
+/* Manages all the states, responsible for their creation, removal,
+activation, deactivation, update, draw, etc. */
 class StateManager
 {
 public:
@@ -26,7 +26,9 @@ public:
 	~StateManager();
 
 	void Update(const sf::Time& time); //Updates all relevant states
+	void UpdateGlobalShader(const sf::Texture* tex); //Updates all state global shaders
 	void Draw(); //Draw all relevant states
+
 
 	void ProcessRequests(); //Removes states that are up for removal
 
@@ -35,6 +37,11 @@ public:
 
 	void SwitchTo(const StateType& type); //Switches to a state
 	void Remove(const StateType& type); //Removes a state
+
+	sf::Shader* GetGlobalShader();
+	const PostEffectSettings& GetPostEffects();
+
+	float GetCurrentZoom();
 
 private:
 	void createState(const StateType& type); //State creation helper method

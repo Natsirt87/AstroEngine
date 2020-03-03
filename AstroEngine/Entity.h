@@ -1,8 +1,7 @@
 #pragma once
 #include <string>
 #include <SFML/System/Vector2.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
+#include "SFML/Graphics.hpp"
 
 /* The abstract parent of all entities, contains base functionality common
 to every entity. */
@@ -39,10 +38,14 @@ public:
 	virtual void SetVelocity(float x, float y);
 
 	virtual void Update(float dt);
-	virtual void Draw(sf::RenderWindow* wind) = 0;
+	virtual void Draw(sf::RenderTexture* render) = 0;
 
 protected:
-	void updateAABB();
+
+	/* Just sets m_AABB to a rectangle based on m_size, if child entity has a
+	visual component (sprite or shape) being displayed that can rotate, make
+	sure to set it to that visual component's global bounding box. */
+	virtual void updateAABB(); 
 
 	//What this entity does to the other entity that collides/overlaps with AABB
 	virtual void OnKinematicCollision(Entity* other) = 0;

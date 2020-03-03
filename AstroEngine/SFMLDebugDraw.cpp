@@ -17,7 +17,7 @@
 #include "SFMLDebugDraw.h"
 #include <iostream>
 
-SFMLDebugDraw::SFMLDebugDraw(sf::RenderWindow &window) : m_window(&window) {}
+SFMLDebugDraw::SFMLDebugDraw(sf::RenderTexture &window) : m_window(&window) {}
 
 void SFMLDebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) 
 {

@@ -66,13 +66,13 @@ void EntityManager::Update(float dt)
 
 void EntityManager::Draw()
 {
-	sf::RenderWindow* wnd = m_context->m_wind->GetRenderWindow();
+	sf::RenderTexture* rnd = m_context->m_renderBuffer;
 	sf::FloatRect viewSpace = m_context->m_wind->GetViewSpace();
 
 	for (auto& itr : m_entities)
 	{
 		if (!viewSpace.intersects(itr.second->m_AABB)) { continue; }
-		itr.second->Draw(wnd);
+		itr.second->Draw(rnd);
 	}
 }
 

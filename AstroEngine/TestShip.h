@@ -17,7 +17,7 @@ public:
 	virtual void PhysicsCollisionEnd(Entity* other) override;
 
 	virtual void Update(float dt) override;
-	virtual void Draw(sf::RenderWindow* wind) override;
+	virtual void Draw(sf::RenderTexture* render) override;
 
 protected:
 	virtual void OnKinematicCollision(Entity* other);

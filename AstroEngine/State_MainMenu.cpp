@@ -92,13 +92,13 @@ void State_MainMenu::Update(const sf::Time& time)
 
 void State_MainMenu::Draw()
 {
-	sf::RenderWindow* window = m_stateMgr->GetContext()->m_wind->GetRenderWindow();
-	window->draw(m_title);
+	sf::RenderTexture* render = m_stateMgr->GetContext()->m_renderBuffer;
+	render->draw(m_title);
 
 	for (int i = 0; i < 3; i++)
 	{
-		window->draw(m_rects[i]);
-		window->draw(m_labels[i]);
+		render->draw(m_rects[i]);
+		render->draw(m_labels[i]);
 	}
 }
 

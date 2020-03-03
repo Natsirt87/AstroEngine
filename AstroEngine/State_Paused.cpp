@@ -44,9 +44,9 @@ void State_Paused::Update(const sf::Time& time) {}
 
 void State_Paused::Draw()
 {
-	sf::RenderWindow* wind = m_stateMgr->GetContext()->m_wind->GetRenderWindow();
-	wind->draw(m_rect);
-	wind->draw(m_text);
+	sf::RenderTexture* render = m_stateMgr->GetContext()->m_renderBuffer;
+	render->draw(m_rect);
+	render->draw(m_text);
 }
 
 void State_Paused::Unpause(EventDetails* details)

@@ -15,10 +15,11 @@ public:
 	virtual void PhysicsCollisionEnd(Entity* other) override;
 
 	virtual void Update(float dt) override;
-	virtual void Draw(sf::RenderWindow* wind) override;
+	virtual void Draw(sf::RenderTexture* render) override;
 
 protected:
-	virtual void OnKinematicCollision(Entity* other);
+	virtual void updateAABB() override;
+	virtual void OnKinematicCollision(Entity* other) override;
 	
 	b2Fixture* boxFixture;
 	sf::RectangleShape* m_rect;

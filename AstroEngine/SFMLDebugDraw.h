@@ -31,9 +31,9 @@ namespace sfdd
 class SFMLDebugDraw : public b2Draw
 {
 private:
-	sf::RenderWindow* m_window;
+	sf::RenderTexture* m_window;
 public:
-	SFMLDebugDraw(sf::RenderWindow &window);
+	SFMLDebugDraw(sf::RenderTexture &window);
 
 	/// Convert Box2D's OpenGL style color definition[0-1] to SFML's color definition[0-255], with optional alpha byte[Default - opaque]
 	static sf::Color GLColorToSFML(const b2Color &color, sf::Uint8 alpha = 255)

@@ -1,5 +1,6 @@
 #include "SpriteSheet.h"
 #include "Anim_Base.h"
+#include "SFML/Graphics.hpp"
 
 SpriteSheet::SpriteSheet(TextureManager* textMgr, Entity* owner) 
 	: BaseComponent(owner), m_textureManager(textMgr), 
@@ -175,7 +176,7 @@ void SpriteSheet::Update(const float& dt)
 	m_animationCurrent->Update(dt);
 }
 
-void SpriteSheet::Draw(sf::RenderWindow* wnd)
+void SpriteSheet::Draw(sf::RenderTexture* rnd)
 {
-	wnd->draw(m_sprite);
+	rnd->draw(m_sprite);
 }

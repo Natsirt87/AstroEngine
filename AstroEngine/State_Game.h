@@ -32,12 +32,19 @@ public:
 	void MainMenu(EventDetails* details); //Switch to the Main Menu state
 	void Pause(EventDetails* details); //Switch to the Paused state
 
+protected:
+	void setupGlobalShader() override;
+	void updateGlobalShader(const sf::Texture* tex) override;
+
 private:
 	void zoom(EventDetails* details); //Bound to middle mouse, zooms in and out the view
 	void toggleDebug(EventDetails* details); //Toggles the drawing of Box2D collision shapes for debug purposes
 
 	sf::Texture* m_backTex;
 	sf::Sprite m_background;
+	sf::Shader* m_backgroundShader;
+
+	sf::Clock m_clock;
 
 	b2World* m_world;
 	TestShip* m_ship;
@@ -48,4 +55,3 @@ private:
 
 	bool m_debugDrawMode;
 };
-

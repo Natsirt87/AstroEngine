@@ -2,11 +2,17 @@
 #include "SFML/System.hpp"
 #include "SFML/Graphics.hpp"
 
-/* The parent of all application states, contains the basic
-functionality common to all states. */
+struct PostEffectSettings
+{
+	PostEffectSettings() : m_bloom(false) {}
+
+	bool m_bloom;
+};
 
 class StateManager;
 
+/* The parent of all application states, contains the basic
+functionality common to all states. */
 class BaseState
 {
 	friend class StateManager;
@@ -23,6 +29,7 @@ public:
 	virtual void Deactivate() = 0; //Called when state is deactivated (not the top state)
 
 	virtual void Update(const sf::Time& time) = 0; //Called every frame, meant for non-visual updating
+	
 	virtual void Draw() = 0; //Called every frame, meant for drawing
 
 	void SetTransparent(const bool& transparent) //Sets whether the state is transparent
@@ -42,8 +49,16 @@ public:
 	sf::View& GetView() { return m_view; }
 
 protected:
+	virtual void setupGlobalShader() {}
+	virtual void updateGlobalShader(const sf::Texture* tex) {}
+
 	StateManager* m_stateMgr;
 	sf::View m_view;
+
+	sf::Shader* m_globalShader;
+	PostEffectSettings m_postEffects;
+
 	bool m_transparent;
 	bool m_transcendent;
+	float m_zoom = 1;
 };

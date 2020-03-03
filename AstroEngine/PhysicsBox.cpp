@@ -15,6 +15,7 @@ void PhysicsBox::Create(float sizeX, float sizeY)
 {
 	m_rect->setOrigin(sizeX / 2.f, sizeY / 2.f);
 	m_rect->setSize(sf::Vector2f(sizeX, sizeY));
+	m_rect->setFillColor(sf::Color(150, 150, 150, 255));
 	boxFixture = rigidbody.AddBox(sizeX, sizeY, b2Vec2(0, 0), 0);
 	boxFixture->SetDensity((sizeX * sizeY) / 20);
 	rigidbody.ResetMassData();
@@ -38,9 +39,14 @@ void PhysicsBox::Update(float dt)
 	m_rect->setRotation(GetAngle());
 }
 
-void PhysicsBox::Draw(sf::RenderWindow* wind)
+void PhysicsBox::Draw(sf::RenderTexture* render)
 {
-	wind->draw(*m_rect);
+	render->draw(*m_rect);
+}
+
+void PhysicsBox::updateAABB()
+{
+	m_AABB = m_rect->getGlobalBounds();
 }
 
 void PhysicsBox::OnKinematicCollision(Entity* other)

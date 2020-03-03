@@ -2,6 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
 #include "EventManager.h"
+class SharedContext;
 
 /* The application window, has functionality for displaying, closing, 
 and various other window related activities. */
@@ -10,7 +11,7 @@ class Window
 {
 public:
 	Window();
-	Window(const std::string& title, const sf::Vector2u& size);
+	Window(const std::string& title, const sf::Vector2u& size, SharedContext* context);
 	~Window();
 
 	void BeginDraw(); //Clear the window
@@ -38,6 +39,8 @@ private:
 	sf::Vector2u m_windowSize;
 	std::string m_windowTitle;
 	EventManager m_eventManager;
+	SharedContext* m_context;
+
 	bool m_isFocused;
 	bool m_isDone;
 	bool m_isFullscreen;
