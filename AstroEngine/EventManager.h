@@ -8,6 +8,9 @@
 #include "SFML/System.hpp"
 #include "SFML/Graphics.hpp"
 
+/* Manages all input events, uses key bindings that it retrieves from
+a file (default Config/Bindings.cfg). */
+
 enum class EventType
 {
 	KeyDown = sf::Event::KeyPressed,

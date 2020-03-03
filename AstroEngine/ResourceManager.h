@@ -6,30 +6,33 @@
 #include <sstream>
 #include "Utilities.h"
 
+/* Parent abstract class of all resource managers, does all
+the resource management stuff.*/
+
 template<typename Derived, typename T>
 class ResourceManager
 {
 public:
-	ResourceManager(const std::string& pathsFile)
+	ResourceManager(const std::string& pathsFile) //Loads a file that has references to the paths for resources w/ IDs
 	{
 		loadPaths(pathsFile);
 	}
 
 	virtual ~ResourceManager() { PurgeResources(); }
 
-	T* GetResource(const std::string& id)
+	T* GetResource(const std::string& id) //Returns a reference to a resource given its ID if it exists
 	{
 		auto res = find(id);
 		return(res ? res->first : nullptr);
 	}
 
-	std::string GetPath(const std::string& id)
+	std::string GetPath(const std::string& id) //Returns the path to a resource given its ID if it exists
 	{
 		auto path = m_paths.find(id);
 		return(path != m_paths.end() ? path->second : "");
 	}
 
-	bool RequireResource(const std::string& id)
+	bool RequireResource(const std::string& id) //Loads an instance of a resource if it exists, given its ID
 	{
 		auto res = find(id);
 		if (res)
@@ -46,7 +49,7 @@ public:
 		return true;
 	}
 
-	bool ReleaseResource(const std::string& id)
+	bool ReleaseResource(const std::string& id) //Removes an instance of a resource if it exists, given its ID
 	{
 		auto res = find(id);
 		if (!res) { return false; }
@@ -55,7 +58,7 @@ public:
 		return true;
 	}
 
-	void PurgeResources()
+	void PurgeResources() //Releases all resource instances
 	{
 		std::cout << "Purging all resources:" << std::endl;
 		while (m_resources.begin() != m_resources.end())
@@ -70,19 +73,19 @@ public:
 	}
 
 protected:
-	T* Load(const std::string& path)
+	T* Load(const std::string& path) //Loads a resource given a path
 	{
 		return static_cast<Derived*>(this)->Load(path);
 	}
 
 private:
-	std::pair<T*, unsigned int>* find(const std::string& id)
+	std::pair<T*, unsigned int>* find(const std::string& id) //Find helper method
 	{
 		auto itr = m_resources.find(id);
 		return (itr != m_resources.end() ? &itr->second : nullptr);
 	}
 
-	bool unload(const std::string& id)
+	bool unload(const std::string& id) //Helper method for unloading resources
 	{
 		auto itr = m_resources.find(id);
 		if (itr == m_resources.end()) { return false; }
@@ -91,7 +94,7 @@ private:
 		return true;
 	}
 
-	void loadPaths(const std::string& pathFile)
+	void loadPaths(const std::string& pathFile) //Loads the paths and IDs (names) of all resources from a file
 	{
 		std::cout << "Initializing texture resources... ";
 		std::ifstream paths;

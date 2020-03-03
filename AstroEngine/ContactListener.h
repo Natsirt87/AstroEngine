@@ -1,31 +1,55 @@
 #pragma once
-#include "PhysicsEntity.h"
-#include "box2d\b2_world_callbacks.h"
-#include "box2d/b2_contact.h"
+#include "Rigidbody.h"
+
+/* Custom contact listener that calls the collision functions for things
+that collide (currently only rigidbodies). */
+
 class ContactListener : public b2ContactListener
 {
 	void BeginContact(b2Contact* contact) override
 	{
 		void* object1 = contact->GetFixtureA()->GetBody()->GetUserData();
 		void* object2 = contact->GetFixtureB()->GetBody()->GetUserData();
-		PhysicsEntity* entity1 = static_cast<PhysicsEntity*>(object1);
-		PhysicsEntity* entity2 = static_cast<PhysicsEntity*>(object2);
+		Rigidbody* body1 = static_cast<Rigidbody*>(object1);
+		Rigidbody* body2 = static_cast<Rigidbody*>(object2);
 
-		std::cout << entity1->GetName() << " collided with " << entity2->GetName() << std::endl;
-
-		entity1->PhysicsCollisionStart(entity2);
-		entity2->PhysicsCollisionStart(entity1);
+		body1->OnCollisionStart(body2);
+		body2->OnCollisionStart(body1);
 	}
 
 	void EndContact(b2Contact* contact) override
 	{
 		void* object1 = contact->GetFixtureA()->GetBody()->GetUserData();
 		void* object2 = contact->GetFixtureB()->GetBody()->GetUserData();
-		PhysicsEntity* entity1 = static_cast<PhysicsEntity*>(object1);
-		PhysicsEntity* entity2 = static_cast<PhysicsEntity*>(object2);
+		Rigidbody* body1 = static_cast<Rigidbody*>(object1);
+		Rigidbody* body2 = static_cast<Rigidbody*>(object2);
 
-		entity1->PhysicsCollisionEnd(entity2);
-		entity2->PhysicsCollisionEnd(entity1);
+		body1->OnCollisionEnd(body2);
+		body2->OnCollisionEnd(body1);
+	}
+
+	// This lets you process and filter BeginContact callbacks as they arise from multiple threads.
+	virtual bool BeginContactImmediate(b2Contact* contact, uint32 threadId)
+	{
+		return true;
+	}
+
+	// This lets you process and filter EndContact callbacks as they arise from multiple threads.
+	virtual bool EndContactImmediate(b2Contact* contact, uint32 threadId)
+	{
+		return true;
+	}
+
+	// This lets you process and filter PreSolve callbacks as they arise from multiple threads.
+	virtual bool PreSolveImmediate(b2Contact* contact, const b2Manifold* oldManifold, uint32 threadId)
+	{
+		return false;
+	}
+
+	// This lets you process and filter PostSolve callbacks as they arise from multiple threads.
+	virtual bool PostSolveImmediate(b2Contact* contact, const b2ContactImpulse* impulse, uint32 threadId)
+	{
+		return false;
 	}
 };
 

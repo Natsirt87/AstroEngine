@@ -1,8 +1,10 @@
 #pragma once
 #include <string>
 #include <SFML/System/Vector2.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
+#include "SFML/Graphics.hpp"
+
+/* The abstract parent of all entities, contains base functionality common
+to every entity. */
 
 enum class EntityType{ 
 	Base, 
@@ -13,12 +15,12 @@ enum class EntityType{
 };
 
 class EntityManager;
-class BaseEntity
+class Entity
 {
 	friend class EntityManager;
 public:
-	BaseEntity(EntityManager* entityMgr);
-	virtual ~BaseEntity();
+	Entity(EntityManager* entityMgr);
+	virtual ~Entity();
 
 	virtual const sf::Vector2f& GetPosition()const;
 	virtual const sf::Vector2f& GetVelocity()const;
@@ -36,13 +38,17 @@ public:
 	virtual void SetVelocity(float x, float y);
 
 	virtual void Update(float dt);
-	virtual void Draw(sf::RenderWindow* wind) = 0;
+	virtual void Draw(sf::RenderTexture* render) = 0;
 
 protected:
-	void updateAABB();
+
+	/* Just sets m_AABB to a rectangle based on m_size, if child entity has a
+	visual component (sprite or shape) being displayed that can rotate, make
+	sure to set it to that visual component's global bounding box. */
+	virtual void updateAABB(); 
 
 	//What this entity does to the other entity that collides/overlaps with AABB
-	virtual void OnEntityCollision(BaseEntity* other) = 0;
+	virtual void OnKinematicCollision(Entity* other) = 0;
 
 	std::string m_name;
 	EntityType m_type;

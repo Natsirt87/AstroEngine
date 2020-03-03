@@ -1,9 +1,12 @@
 #pragma once
-#include "BaseEntity.h"
+#include "Entity.h"
 #include "Rigidbody.h"
 #include "SharedContext.h"
 
-class PhysicsEntity : public BaseEntity
+/* A helpful little abstract class that just does stuff to 
+a rigidbody when Entity methods are called. */
+
+class PhysicsEntity : public Entity
 {
 public:
 	PhysicsEntity(EntityManager* entityMgr);
@@ -17,16 +20,14 @@ public:
 
 	virtual void SetVelocity(float x, float y) override;
 
-	virtual void PhysicsCollisionStart(PhysicsEntity* other) = 0;
-	virtual void PhysicsCollisionEnd(PhysicsEntity* other) = 0;
+	virtual void PhysicsCollisionStart(Entity* other) = 0;
+	virtual void PhysicsCollisionEnd(Entity* other) = 0;
 	
 	virtual void Update(float dt);
-	virtual void Draw(sf::RenderWindow* wind) = 0;
+	virtual void Draw(sf::RenderTexture* render) = 0;
 
+	Rigidbody rigidbody;
 protected:
-	virtual void OnEntityCollision(BaseEntity* other) = 0;
-	
-	Rigidbody rigidbody; 
-	
+	virtual void OnKinematicCollision(Entity* other) = 0;
 };
 

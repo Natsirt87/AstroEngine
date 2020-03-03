@@ -1,12 +1,16 @@
 #pragma once
 #include <unordered_map>
 #include <functional>
-#include "BaseEntity.h"
+#include "Entity.h"
+
+/* Manages all entities and is responsible for calling their update and
+draw methods.*/
 
 using EntityContainer = std::unordered_map<
-	unsigned int, BaseEntity*>;
+	unsigned int, Entity*>;
 using EntityFactory = std::unordered_map<
-	EntityType, std::function<BaseEntity*(void)>>;
+	EntityType, std::function<Entity*(void)>>;
+using EntityList = std::vector<Entity*>;
 
 class SharedContext;
 
@@ -17,9 +21,10 @@ public:
 	~EntityManager();
 	
 	int Add(const EntityType& type,
-		const std::string& name = "");
-	BaseEntity* Find(unsigned int id);
-	BaseEntity* Find(const std::string& name);
+		const std::string& name,
+		bool kinematic);
+	Entity* Find(unsigned int id);
+	Entity* Find(const std::string& name);
 	void Remove(unsigned int id);
 
 	void Update(float dt);
@@ -33,17 +38,18 @@ private:
 	template<class T>
 	void RegisterEntity(const EntityType& type)
 	{
-		m_entityFactory[type] = [this]() -> BaseEntity*
+		m_entityFactory[type] = [this]() -> Entity*
 		{
 			return new T(this);
 		};
 	}
 
 	void processRemovals();
-	void entityCollisionCheck();
+	void kinematicCollisionCheck();
 
 	EntityContainer m_entities;
 	EntityFactory m_entityFactory;
+	EntityList m_kinematicEntities;
 	SharedContext* m_context;
 	unsigned int m_idCounter;
 	unsigned int m_maxEntities;

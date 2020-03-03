@@ -2,7 +2,7 @@
 #include "StateManager.h"
 
 State_Intro::State_Intro(StateManager* stateManager)
-	: BaseState(stateManager) {}
+	: BaseState(stateManager), m_timePassed(0.f) {}
 
 State_Intro::~State_Intro() {}
 
@@ -65,11 +65,11 @@ void State_Intro::Update(const sf::Time& time)
 
 void State_Intro::Draw()
 {
-	sf::RenderWindow* window = m_stateMgr->GetContext()->m_wind->GetRenderWindow();
-	window->draw(m_introSprite);
+	sf::RenderTexture* render = m_stateMgr->GetContext()->m_renderBuffer;
+	render->draw(m_introSprite);
 	if (m_timePassed >= 4.f)
 	{
-		window->draw(m_text);
+		render->draw(m_text);
 	}
 }
 

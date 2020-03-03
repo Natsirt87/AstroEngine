@@ -7,14 +7,17 @@
 #include "Anim_Standard.h"
 #include "Utilities.h"
 #include "Anim_Base.h"
+#include "BaseComponent.h"
 
+/* The component responsible for animation, contains all sorts of animation
+functionality. Uses a spritesheet (if you couldn't tell from the name). */
 
 using Animations = std::unordered_map<std::string, Anim_Base*>;
 
-class SpriteSheet
+class SpriteSheet : public BaseComponent
 {
 public:
-	SpriteSheet(TextureManager* textMgr);
+	SpriteSheet(TextureManager* textMgr, Entity* owner);
 	~SpriteSheet();
 
 	void CropSprite(const sf::IntRect& rect);
@@ -41,7 +44,7 @@ public:
 		const std::string& nextAnim);
 
 	void Update(const float& dt);
-	void Draw(sf::RenderWindow* wnd);
+	void Draw(sf::RenderTexture* rnd);
 
 private:
 	std::string m_texture;

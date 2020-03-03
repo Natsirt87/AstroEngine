@@ -3,9 +3,10 @@
 
 int main()
 {
-	Game game;
-	while (!game.GetWindow()->IsDone())
+	Game* game = new Game();
+	while (!game->GetWindow()->IsDone())
 	{
-		game.Run();
+		game->Run();
 	}
+	delete game;
 }

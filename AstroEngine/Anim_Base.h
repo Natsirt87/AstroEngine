@@ -4,6 +4,8 @@ class SpriteSheet;
 
 using Frame = unsigned int;
 
+/* The parent animation class, contains all sorts of basic animation functionality. */
+
 class Anim_Base
 {
 	friend class SpriteSheet;

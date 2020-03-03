@@ -16,29 +16,39 @@ using TypeContainer = std::vector<StateType>;
 using StateFactory = std::unordered_map<StateType, std::function<BaseState*(void)>>;
 
 class SharedContext;
+
+/* Manages all the states, responsible for their creation, removal,
+activation, deactivation, update, draw, etc. */
 class StateManager
 {
 public:
 	StateManager(SharedContext* shared);
 	~StateManager();
 
-	void Update(const sf::Time& time);
-	void Draw();
+	void Update(const sf::Time& time); //Updates all relevant states
+	void UpdateGlobalShader(const sf::Texture* tex); //Updates all state global shaders
+	void Draw(); //Draw all relevant states
 
-	void ProcessRequests();
 
-	SharedContext* GetContext();
-	bool HasState(const StateType& type);
+	void ProcessRequests(); //Removes states that are up for removal
 
-	void SwitchTo(const StateType& type);
-	void Remove(const StateType& type);
+	SharedContext* GetContext(); //Gets the shared context
+	bool HasState(const StateType& type); //Checks whether a state exists
+
+	void SwitchTo(const StateType& type); //Switches to a state
+	void Remove(const StateType& type); //Removes a state
+
+	sf::Shader* GetGlobalShader();
+	const PostEffectSettings& GetPostEffects();
+
+	float GetCurrentZoom();
 
 private:
-	void createState(const StateType& type);
-	void removeState(const StateType& type);
+	void createState(const StateType& type); //State creation helper method
+	void removeState(const StateType& type); //State removal helper method
 
 	template<class T>
-	void registerState(const StateType& type)
+	void registerState(const StateType& type) //Registers a state class with a state type for the state factory
 	{
 		m_stateFactory[type] = [this]() -> BaseState*
 		{

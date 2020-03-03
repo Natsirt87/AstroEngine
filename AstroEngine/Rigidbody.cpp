@@ -1,12 +1,14 @@
 #include "Rigidbody.h"
 
-Rigidbody::Rigidbody(b2World* world) : m_world(world)
+Rigidbody::Rigidbody(b2World* world, Entity* owner) 
+	: BaseComponent(owner), m_world(world)
 {
 	m_bodyDef.type = b2BodyType::b2_dynamicBody;
 	m_bodyDef.position.Set(0, 0);
 	m_bodyDef.fixedRotation = false;
 	m_bodyDef.angle = 0;
 	m_body = m_world->CreateBody(&m_bodyDef);
+	m_body->SetUserData(this);
 }
 
 Rigidbody::~Rigidbody()
@@ -24,21 +26,27 @@ b2Fixture* Rigidbody::AddBox(float sizeX, float sizeY, const b2Vec2& offset, flo
 	float b2SizeX = conv::PTM(sizeX);
 	float b2SizeY = conv::PTM(sizeY);
 	float b2Angle = conv::DTR(angle);
+	b2Vec2 b2Offset(conv::PTM(offset.x), conv::PTM(offset.y));
 
-	shape->SetAsBox(b2SizeX / 2.0, b2SizeY / 2.0, offset, angle);
+	shape->SetAsBox(b2SizeX / 2.0, b2SizeY / 2.0, b2Offset, angle);
 	fixtureDef->shape = shape;
 	fixtureDef->density = 1;
 	fixtureDef->friction = 0.5;
 	m_colliders.emplace_back(fixtureDef, shape);
-	
 
 	return m_body->CreateFixture(fixtureDef);
 }
 
-b2Fixture* Rigidbody::AddPolygon(const b2Vec2* points, int32 count)
+b2Fixture* Rigidbody::AddPolygon(b2Vec2* points, int32 count)
 {
 	b2FixtureDef* fixtureDef = new b2FixtureDef();
 	b2PolygonShape* shape = new b2PolygonShape();
+
+	for (int i = 0; i < count; i++)
+	{
+		b2Vec2 p = points[i];
+		points[i] = b2Vec2(conv::PTM(p.x), conv::PTM(p.y));
+	}
 
 	shape->Set(points, count);
 	fixtureDef->shape = shape;
@@ -53,9 +61,10 @@ b2Fixture* Rigidbody::AddCircle(float radius, const b2Vec2& offset)
 {
 	b2FixtureDef* fixtureDef = new b2FixtureDef();
 	b2CircleShape* shape = new b2CircleShape();
+	b2Vec2 b2Offset(conv::PTM(offset.x), conv::PTM(offset.y));
 
 	shape->m_radius = conv::PTM(radius);
-	shape->m_p = offset;
+	shape->m_p = b2Offset;
 	fixtureDef->shape = shape;
 	fixtureDef->density = 1;
 	fixtureDef->friction = 0.5;
@@ -67,6 +76,24 @@ b2Fixture* Rigidbody::AddCircle(float radius, const b2Vec2& offset)
 void Rigidbody::RemoveCollider(b2Fixture* fixture)
 {
 	m_body->DestroyFixture(fixture);
+}
+
+void Rigidbody::OnCollisionStart(Rigidbody* other)
+{
+	if (m_collisionStart != nullptr)
+	{
+		Entity* otherEntity = other->GetOwner();
+		m_collisionStart(otherEntity);
+	}
+}
+
+void Rigidbody::OnCollisionEnd(Rigidbody* other)
+{
+	if (m_collisionEnd != nullptr)
+	{
+		Entity* otherEntity = other->GetOwner();
+		m_collisionEnd(otherEntity);
+	}
 }
 
 const sf::Vector2f& Rigidbody::GetPosition()
@@ -89,9 +116,9 @@ float Rigidbody::GetInertia()
 	return m_body->GetInertia();
 }
 
-void Rigidbody::SetUserData(void* data)
+float Rigidbody::GetMass()
 {
-	m_body->SetUserData(data);
+	return m_body->GetMass();
 }
 
 float Rigidbody::GetAngle()

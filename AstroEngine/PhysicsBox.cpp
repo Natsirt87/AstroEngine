@@ -1,47 +1,55 @@
 #include "PhysicsBox.h"
 
 PhysicsBox::PhysicsBox(EntityManager* entityMgr)
-	: PhysicsEntity(entityMgr), m_rect(sf::Vector2f(5, 5))
+	: PhysicsEntity(entityMgr), m_rect(new sf::RectangleShape(sf::Vector2f(5, 5)))
 {
 	m_name = "PhysicsBox";
 }
 
 PhysicsBox::~PhysicsBox()
-{}
+{
+	delete m_rect;
+}
 
 void PhysicsBox::Create(float sizeX, float sizeY)
 {
-	m_rect.setOrigin(sizeX / 2.f, sizeY / 2.f);
-	m_rect.setSize(sf::Vector2f(sizeX, sizeY));
+	m_rect->setOrigin(sizeX / 2.f, sizeY / 2.f);
+	m_rect->setSize(sf::Vector2f(sizeX, sizeY));
+	m_rect->setFillColor(sf::Color(150, 150, 150, 255));
 	boxFixture = rigidbody.AddBox(sizeX, sizeY, b2Vec2(0, 0), 0);
-	boxFixture->SetDensity((sizeX * sizeY) / 15);
+	boxFixture->SetDensity((sizeX * sizeY) / 20);
 	rigidbody.ResetMassData();
 
 	SetSize(sizeX, sizeY);
 }
 
-void PhysicsBox::PhysicsCollisionStart(PhysicsEntity* other)
+void PhysicsBox::PhysicsCollisionStart(Entity* other)
 {
 	
 }
 
-void PhysicsBox::PhysicsCollisionEnd(PhysicsEntity* other)
+void PhysicsBox::PhysicsCollisionEnd(Entity* other)
 {
 }
 
 void PhysicsBox::Update(float dt)
 {
 	PhysicsEntity::Update(dt);
-	m_rect.setPosition(m_position);
-	m_rect.setRotation(GetAngle());
+	m_rect->setPosition(m_position);
+	m_rect->setRotation(GetAngle());
 }
 
-void PhysicsBox::Draw(sf::RenderWindow* wind)
+void PhysicsBox::Draw(sf::RenderTexture* render)
 {
-	wind->draw(m_rect);
+	render->draw(*m_rect);
 }
 
-void PhysicsBox::OnEntityCollision(BaseEntity* other)
+void PhysicsBox::updateAABB()
+{
+	m_AABB = m_rect->getGlobalBounds();
+}
+
+void PhysicsBox::OnKinematicCollision(Entity* other)
 {
 	//std::cout << "Matthew is gay" << std::endl;
 }
