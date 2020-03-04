@@ -123,7 +123,7 @@ void State_Game::Pause(EventDetails* details)
 void State_Game::setupGlobalShader()
 {
 	std::cout << "Setting up global shaders" << std::endl;
-	ShaderManager* shaderMgr = m_stateMgr->GetContext()->m_shaderManager;
+	/*ShaderManager* shaderMgr = m_stateMgr->GetContext()->m_shaderManager;
 
 	if (shaderMgr->RequireResource("Wobbly"))
 	{
@@ -132,7 +132,7 @@ void State_Game::setupGlobalShader()
 		m_globalShader->setUniform("uPositionFreq", 0.05f);
 		m_globalShader->setUniform("uSpeed", 5.f);
 		m_globalShader->setUniform("uStrength", 0.002f);
-	}
+	}*/
 }
 
 void State_Game::updateGlobalShader(const sf::Texture* tex)
