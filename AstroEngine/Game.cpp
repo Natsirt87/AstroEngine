@@ -1,8 +1,9 @@
 #include "Game.h"
 
 Game::Game() : m_window("Astro", sf::Vector2u(1920, 1080), &m_context),
-m_stateManager(&m_context), m_entityManager(&m_context, 500), m_world(b2Vec2(0,0)),
-m_globalShader(nullptr), m_bloomEffect(&m_shaderManager), m_bloomEnabled(true),
+m_stateManager(&m_context), m_entityManager(&m_context, 500),
+m_soundManager(&m_audioManager), m_world(b2Vec2(0,0)), m_globalShader(nullptr), 
+m_bloomEffect(&m_shaderManager), m_bloomEnabled(true),
 m_antialiasing(false)
 {
 	if (!sf::Shader::isAvailable())
@@ -23,6 +24,7 @@ m_antialiasing(false)
 	m_context.m_wind = &m_window;
 	m_context.m_eventManager = m_window.GetEventManager();
 	m_context.m_entityManager = &m_entityManager;
+	m_context.m_soundManager = &m_soundManager;
 	m_context.m_textureManager = &m_textureManager;
 	m_context.m_shaderManager = &m_shaderManager;
 	m_context.m_world = &m_world;
@@ -39,13 +41,16 @@ void Game::Run()
 	render();
 	lateUpdate(); 
 	float fps = 1 / m_elapsed.asSeconds();
-	//std::cout << "FPS: " << std::to_string((int)fps) << std::endl;
+	std::string fpsStr = "FPS: " + std::to_string((int)fps);
+	std::cout << fpsStr;
+	std::cout << std::string(fpsStr.length(), '\b');
 }
 
 void Game::update(sf::Time deltaTime)
 {
 	m_window.Update();
 	m_stateManager.Update(deltaTime);
+	m_soundManager.Update(deltaTime.asSeconds());
 }
 
 void Game::render()

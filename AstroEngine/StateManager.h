@@ -15,7 +15,7 @@ using StateContainer = std::vector<std::pair<StateType, BaseState*>>;
 using TypeContainer = std::vector<StateType>;
 using StateFactory = std::unordered_map<StateType, std::function<BaseState*(void)>>;
 
-class SharedContext;
+struct SharedContext;
 
 /* Manages all the states, responsible for their creation, removal,
 activation, deactivation, update, draw, etc. */

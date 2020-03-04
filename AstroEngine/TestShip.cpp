@@ -4,8 +4,9 @@
 TestShip::TestShip(EntityManager* entityMgr) 
 	: PhysicsEntity(entityMgr),
 	m_spriteSheet(m_entityMgr->GetContext()->m_textureManager, this),
-	thrustForce(200),
-	rotationTorque(150)
+	m_thrustForce(200), m_rotationTorque(150), 
+	m_soundEmitter(this, entityMgr->GetContext()->m_soundManager),
+	m_soundListener(this)
 {
 	spriteSheetSetup();
 	physicsSetup();
@@ -37,7 +38,9 @@ void TestShip::Update(float dt)
 	m_spriteSheet.Update(dt);
 	m_spriteSheet.SetSpritePosition(m_position);
 	m_spriteSheet.SetSpriteRotation(GetAngle());
-	
+	m_soundListener.Update(m_zoom);
+	m_soundEmitter.Update();
+
 	animate();
 }
 
@@ -46,9 +49,12 @@ void TestShip::Draw(sf::RenderTexture* render)
 	m_spriteSheet.Draw(render);
 }
 
-void TestShip::OnKinematicCollision(Entity* other)
+void TestShip::SetZoom(float zoom)
 {
+	m_zoom = zoom;
 }
+
+void TestShip::OnKinematicCollision(Entity* other) {}
 
 void TestShip::spriteSheetSetup()
 {
@@ -57,7 +63,7 @@ void TestShip::spriteSheetSetup()
 	m_spriteSheet.SetAnimation("Idle", false, false);
 	SetSize(m_spriteSheet.GetSpriteSize().x, m_spriteSheet.GetSpriteSize().y);
 
-	animState = AnimState::Idle;
+	m_animState = AnimState::Idle;
 }
 
 void TestShip::physicsSetup()
@@ -99,7 +105,7 @@ void TestShip::physicsSetup()
 
 void TestShip::animate()
 {
-	if (animState == AnimState::Thrusting)
+	if (m_animState == AnimState::Thrusting)
 	{
 		if (m_spriteSheet.GetCurrentAnim()->GetName() != "Idle")
 		{ return; }
@@ -117,16 +123,36 @@ void TestShip::thrust(EventDetails* details)
 {
 	if (details->m_name == "Game_StartThrust")
 	{
-		animState = AnimState::Thrusting;
+		m_animState = AnimState::Thrusting;
 
-		float fx = cos(conv::DTR(GetAngle() - 90)) * thrustForce;
-		float fy = sin(conv::DTR(GetAngle() - 90)) * thrustForce;
+		float fx = cos(conv::DTR(GetAngle() - 90)) * m_thrustForce;
+		float fy = sin(conv::DTR(GetAngle() - 90)) * m_thrustForce;
 
 		rigidbody.ApplyForceToCenter(sf::Vector2f(fx, fy));
+
+		playThrustSound();
 	}
 	else
 	{
-		animState = AnimState::Idle;
+		m_animState = AnimState::Idle;
+		stopThrustSound();
+	}
+}
+
+void TestShip::playThrustSound()
+{
+	if (!m_soundEmitter.IsPlaying(m_thrustSoundID))
+	{
+		std::cout << "Thrust" << std::endl;
+		m_thrustSoundID = m_soundEmitter.Play("Thruster_Light", GetPosition(), true, true);
+	}
+}
+
+void TestShip::stopThrustSound()
+{
+	if (m_soundEmitter.IsPlaying(m_thrustSoundID))
+	{
+		m_soundEmitter.Stop(m_thrustSoundID);
 	}
 }
 
@@ -157,6 +183,6 @@ void TestShip::rotateToMouse()
 	while (totalRotation < -180) totalRotation += 360;
 	while (totalRotation > 180) totalRotation -= 360;
 	
-	float torque = totalRotation < 0 ? -rotationTorque : rotationTorque;
+	float torque = totalRotation < 0 ? -m_rotationTorque : m_rotationTorque;
 	rigidbody.ApplyTorque(torque);
 }

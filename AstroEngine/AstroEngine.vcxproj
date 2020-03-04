@@ -169,6 +169,9 @@
     <ClCompile Include="PostEffect.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="SFMLDebugDraw.cpp" />
+    <ClCompile Include="SoundEmitter.cpp" />
+    <ClCompile Include="SoundListener.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="State_Game.cpp" />
@@ -182,6 +185,7 @@
     <ClInclude Include="Anim_Base.h" />
     <ClInclude Include="Anim_Directional.h" />
     <ClInclude Include="Anim_Standard.h" />
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="BaseState.h" />
     <ClInclude Include="BloomEffect.h" />
@@ -200,6 +204,10 @@
     <ClInclude Include="SFMLDebugDraw.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="SharedContext.h" />
+    <ClInclude Include="SoundEmitter.h" />
+    <ClInclude Include="SoundListener.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="SoundProps.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="State_Game.h" />
@@ -208,7 +216,6 @@
     <ClInclude Include="State_Paused.h" />
     <ClInclude Include="TestShip.h" />
     <ClInclude Include="TextureManager.h" />
-    <ClInclude Include="Utilities.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

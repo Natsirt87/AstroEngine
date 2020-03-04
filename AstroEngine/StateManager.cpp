@@ -109,6 +109,7 @@ bool StateManager::HasState(const StateType& type)
 void StateManager::SwitchTo(const StateType& type)
 {
 	m_shared->m_eventManager->SetCurrentState(type);
+	m_shared->m_soundManager->ChangeState(type);
 	for (auto itr = m_states.begin(); itr != m_states.end(); itr++)
 	{
 		if (itr->first == type)
@@ -173,6 +174,7 @@ void StateManager::removeState(const StateType& type)
 			itr->second->OnDestroy();
 			delete itr->second;
 			m_states.erase(itr);
+			m_shared->m_soundManager->RemoveState(type);
 			return;
 		}
 	}

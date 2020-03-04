@@ -42,7 +42,6 @@ private:
 
 	sf::Texture* m_backTex;
 	sf::Sprite m_background;
-	sf::Shader* m_backgroundShader;
 
 	sf::Clock m_clock;
 

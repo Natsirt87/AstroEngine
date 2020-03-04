@@ -12,7 +12,7 @@ using EntityFactory = std::unordered_map<
 	EntityType, std::function<Entity*(void)>>;
 using EntityList = std::vector<Entity*>;
 
-class SharedContext;
+struct SharedContext;
 
 class EntityManager
 {

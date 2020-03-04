@@ -5,7 +5,6 @@
 #include "TextureManager.h"
 #include "Anim_Directional.h"
 #include "Anim_Standard.h"
-#include "Utilities.h"
 #include "Anim_Base.h"
 #include "BaseComponent.h"
 

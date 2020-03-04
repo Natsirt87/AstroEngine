@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "Utilities.h"
 
 /* Parent abstract class of all resource managers, does all
 the resource management stuff.*/

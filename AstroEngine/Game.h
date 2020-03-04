@@ -10,6 +10,7 @@
 #include "EntityManager.h"
 #include "ContactListener.h"
 #include "ShaderManager.h"
+#include "SoundManager.h"
 #include "BloomEffect.h"
 
 /* Entry point for the application after Main, this class
@@ -36,7 +37,9 @@ private:
 	Window m_window;
 	StateManager m_stateManager;
 	EntityManager m_entityManager;
+	SoundManager m_soundManager;
 	TextureManager m_textureManager;
+	AudioManager m_audioManager;
 	ShaderManager m_shaderManager;
 	b2World m_world;
 	ContactListener m_contactListener;

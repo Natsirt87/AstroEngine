@@ -2,6 +2,7 @@
 #include "PhysicsBox.h"
 #include "TestShip.h"
 #include "Box2D/Common/b2Draw.h"
+#include "SFML/Audio/Listener.hpp"
 #include <ctime>
 
 State_Game::State_Game(StateManager* stateManager)
@@ -21,6 +22,7 @@ void State_Game::OnCreate()
 
 	TextureManager* texMgr = m_stateMgr->GetContext()->m_textureManager;
 	EntityManager* entityMgr = m_stateMgr->GetContext()->m_entityManager;
+	SoundManager* soundMgr = m_stateMgr->GetContext()->m_soundManager;
 	sf::Vector2u windowSize = m_stateMgr->GetContext()->
 		m_wind->GetRenderWindow()->getSize();
 
@@ -33,7 +35,7 @@ void State_Game::OnCreate()
 
 	std::time_t seed = std::time(nullptr);
 	std::srand(seed);
-	for (int i = 0; i < 512; i++)
+	for (int i = 0; i < 256; i++)
 	{
 		entityMgr->Add(EntityType::PhysicsObject, "Box" + std::to_string(i), false);
 		PhysicsBox* box = (PhysicsBox*)entityMgr->Find("Box" + std::to_string(i));
@@ -41,13 +43,13 @@ void State_Game::OnCreate()
 		float boxLengthX = rand() % 300 + 20;
 		float boxLengthY = rand() % 300 + 20;
 
-		int rowSize = 33;
+		int rowSize = 20;
 		int boxDist = 600;
 		float boxPosX = (i % rowSize) * boxDist - (boxDist * 14);
 		float boxPosY = (i / rowSize) * boxDist - (boxDist* 6);
 
-		float boxImpulseX = rand() % 2400 - 1200;
-		float boxImpulseY = rand() % 2400 - 1200;
+		float boxImpulseX = rand() % 1000 - 500;
+		float boxImpulseY = rand() % 1000 - 500;
 		
 		box->Create(boxLengthX, boxLengthY);
 		box->SetPosition(boxPosX, boxPosY);
@@ -62,6 +64,8 @@ void State_Game::OnCreate()
 	m_background.setTexture(*m_backTex);
 	m_background.setScale(3, 3);
 	m_background.setOrigin(m_backTex->getSize().x / 2.f, m_backTex->getSize().y / 2.f);
+
+	soundMgr->PlayMusic("Space_Ambient_1", 20.f, true);
 
 	EventManager* eventMgr = m_stateMgr->GetContext()->m_eventManager;
 	eventMgr->AddCallback(StateType::Game, "Game_Pause", &State_Game::Pause, this);
@@ -88,6 +92,8 @@ void State_Game::Update(const sf::Time& time)
 {
 	const float dt = time.asSeconds();
 	m_stateMgr->GetContext()->m_entityManager->Update(dt);
+
+	m_ship->SetZoom(m_zoom);
 
 	m_view.setCenter(m_ship->GetPosition());
 	m_background.setPosition(m_ship->GetPosition());
@@ -140,6 +146,7 @@ void State_Game::updateGlobalShader(const sf::Texture* tex)
 
 void State_Game::zoom(EventDetails* details)
 {
+	sf::Vector3f lisPos = sf::Listener::getPosition();
 	if (details->m_mouseWheelDelta < 0) 
 	{ 
 		m_view.zoom(1.05); 

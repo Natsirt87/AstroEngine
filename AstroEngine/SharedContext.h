@@ -6,6 +6,7 @@
 #include "TextureManager.h"
 #include "EntityManager.h"
 #include "ShaderManager.h"
+#include "SoundManager.h"
 
 /* Collection of instances for things many objects will probably
 need to reference, hence the name "shared" context. */
@@ -18,6 +19,7 @@ struct SharedContext
 		m_textureManager(nullptr),
 		m_shaderManager(nullptr),
 		m_entityManager(nullptr),
+		m_soundManager(nullptr),
 		m_world(nullptr),
 		m_renderBuffer(nullptr){}
 
@@ -27,6 +29,7 @@ struct SharedContext
 	TextureManager* m_textureManager;
 	ShaderManager* m_shaderManager;
 	EntityManager* m_entityManager;
+	SoundManager* m_soundManager;
 	b2World* m_world;
 	sf::RenderTexture* m_renderBuffer;
 };

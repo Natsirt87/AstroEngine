@@ -1,6 +1,8 @@
 #pragma once
 #include "PhysicsEntity.h"
 #include "SpriteSheet.h"
+#include "SoundEmitter.h"
+#include "SoundListener.h"
 
 /* A ship for testing systems in the game engine, also
 acts as an example for how to use certain things. */
@@ -19,6 +21,8 @@ public:
 	virtual void Update(float dt) override;
 	virtual void Draw(sf::RenderTexture* render) override;
 
+	void SetZoom(float zoom);
+
 protected:
 	virtual void OnKinematicCollision(Entity* other);
 
@@ -27,12 +31,20 @@ protected:
 
 	void animate();
 	void thrust(EventDetails* details);
+	void playThrustSound();
+	void stopThrustSound();
 	void rotateToMouse();
 	
-	float thrustForce;
-	float rotationTorque;
+	float m_thrustForce;
+	float m_rotationTorque;
+
+	int m_thrustSoundID;
+
+	float m_zoom;
 
 	SpriteSheet m_spriteSheet;
-	AnimState animState;
+	AnimState m_animState;
+	SoundEmitter m_soundEmitter;
+	SoundListener m_soundListener;
 };
 

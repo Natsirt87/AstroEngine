@@ -66,6 +66,15 @@
     <ClCompile Include="BloomEffect.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEmitter.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundListener.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EventManager.h">
@@ -105,9 +114,6 @@
       <Filter>Animation</Filter>
     </ClInclude>
     <ClInclude Include="SharedContext.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Utilities.h">
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
@@ -158,6 +164,21 @@
     </ClInclude>
     <ClInclude Include="BloomEffect.h">
       <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Managers\Resource Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEmitter.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundProps.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundListener.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
